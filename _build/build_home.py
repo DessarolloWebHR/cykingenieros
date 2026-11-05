@@ -131,10 +131,27 @@ def projects_html():
     return "\n      ".join(out)
 
 
-def logo_slots():
-    return "".join(
-        f'<li class="logo-slot"><span>Cliente {i:02d}<small>Logo pendiente</small></span></li>' for i in range(1, 9)
-    )
+CLIENTS = [
+    ("clinica-meds", "Clínica Meds"),
+    ("almarza", "Perfiles y Tubos de Acero Almarza"),
+    ("corteva", "Corteva Agriscience"),
+    ("lourdes", "Lourdes Bulk Wine"),
+    ("veramonte", "Viñedos Veramonte"),
+]
+
+
+def client_logos(repeat=False):
+    """Approved client logos (grey-tinted in CSS). repeat=True renders a decorative,
+    screen-reader-hidden copy used to keep the marquee wider than the viewport."""
+    out = []
+    for slug, name in CLIENTS:
+        img = Image.open(BUILD / "clients" / f"{slug}.png").convert("RGBA")
+        img = img.resize((round(img.width * 110 / img.height), 110), Image.LANCZOS) if img.height > 110 else img
+        img = Image.merge("LA", (Image.new("L", img.size, 0), img.getchannel("A")))  # colour comes from CSS
+        alt = "" if repeat else name
+        hidden = ' aria-hidden="true"' if repeat else ""
+        out.append(f'<li{hidden}><img src="{png(img)}" alt="{alt}" width="{img.width}" height="{img.height}" loading="lazy"></li>')
+    return "".join(out)
 
 
 def main():
@@ -143,7 +160,8 @@ def main():
     html = TEMPLATE.read_text(encoding="utf-8")
     html = (html.replace("{{SERVICES}}", services_html())
                 .replace("{{PROJECTS}}", projects_html())
-                .replace("{{LOGO_SLOTS}}", logo_slots())
+                .replace("{{LOGO_SLOTS_REPEAT}}", client_logos(repeat=True))
+                .replace("{{LOGO_SLOTS}}", client_logos())
                 .replace("{{LOGO_WHITE}}", logo_white)
                 .replace("{{LOGO}}", logo)
                 .replace("{{KAREN}}", karen)

@@ -171,9 +171,10 @@ ul{margin:0;padding:0;list-style:none}
 .marquee__track{display:flex;width:max-content;animation:marquee 45s linear infinite}
 .marquee:hover .marquee__track,.marquee:focus-within .marquee__track,.marquee.is-paused .marquee__track{animation-play-state:paused}
 @keyframes marquee{to{transform:translateX(-50%)}}
-.marquee__group{display:flex;align-items:center;gap:20px;padding-right:20px}
-.logo-slot{flex:none;display:grid;place-items:center;width:200px;height:84px;border-radius:var(--r-md);background:var(--cloud);color:#A3AABA;font-weight:600;font-size:15px;letter-spacing:.02em;text-align:center}
-.logo-slot small{display:block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#B4BAC7;margin-top:2px}
+.marquee__group{display:flex;align-items:center;gap:clamp(48px,6vw,88px);padding-right:clamp(48px,6vw,88px)}
+.marquee__group li{flex:none;display:flex;align-items:center;height:72px}
+.client-logo-strip img{height:55px;max-width:185px;width:auto;object-fit:contain;filter:brightness(0);opacity:.41;transition:opacity .3s ease}
+.client-logo-strip img:hover{opacity:.7}
 .marquee__btn{margin:24px auto 0;display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:999px}
 .marquee__btn:hover{color:var(--navy);background:var(--cloud)}
 .marquee__btn svg{width:12px;height:12px}
@@ -356,7 +357,8 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
   .js [data-reveal]{opacity:1;transform:none}
   .marquee{-webkit-mask-image:none;mask-image:none}
   .marquee__track{animation:none!important;width:auto}
-  .marquee__group{flex-wrap:wrap;justify-content:center;padding:0}
+  .marquee__group{flex-wrap:wrap;justify-content:center;padding:0 var(--gutter)}
+  .marquee__group li[aria-hidden="true"]{display:none}
   .marquee__group[aria-hidden="true"],.marquee__btn{display:none}
 }
 </style>
@@ -420,7 +422,7 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
   </div>
 </section>
 
-<!-- 02 · CLIENTES — DEV: reemplazar .logo-slot por logos aprobados (escala de grises) -->
+<!-- 02 · CLIENTES — logos aprobados por C&K -->
 <section class="clients" aria-labelledby="clients-title">
   <div class="container">
     <div class="head head--center" data-reveal>
@@ -428,10 +430,10 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
       <h2 id="clients-title">Empresas que han confiado en nosotros.</h2>
     </div>
   </div>
-  <div class="marquee" data-reveal style="--d:100">
+  <div class="marquee client-logo-strip" data-reveal style="--d:100">
     <div class="marquee__track">
-      <ul class="marquee__group" aria-label="Clientes">{{LOGO_SLOTS}}</ul>
-      <ul class="marquee__group" aria-hidden="true">{{LOGO_SLOTS}}</ul>
+      <ul class="marquee__group" aria-label="Clientes">{{LOGO_SLOTS}}{{LOGO_SLOTS_REPEAT}}</ul>
+      <ul class="marquee__group" aria-hidden="true">{{LOGO_SLOTS_REPEAT}}{{LOGO_SLOTS_REPEAT}}</ul>
     </div>
   </div>
   <button class="marquee__btn" type="button" aria-pressed="false" data-marquee-toggle><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx="1"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1"/></svg><span>Pausar</span></button>
