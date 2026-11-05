@@ -23,6 +23,10 @@ PARTIALS = BUILD / "partials"
 ARROW = ('<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>')
 
+PIN = ('<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.7A4.5 4.5 0 0 0 3.5 6.8'
+       'c0 3.5 4.5 7.7 4.5 7.7Z"/><circle cx="8" cy="6.8" r="1.6"/></svg>')
+CHECK = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2.2 6.3 2.4 2.4L9.8 3.5"/></svg>'
+
 # name -> output width
 PHOTO_WIDTHS = {"hero": 2000, "approach": 1200, "svc-tarifaria": 1100, "nos-hero": 1400,
                 "nos-filosofia": 1100, "nos-confidencialidad": 1100,
@@ -53,9 +57,9 @@ PROJECTS = [
     # (photo, slug, sector, title, client, location, description, alt) — real C&K projects
     # from the previous website; photos supplied by the client.
     ("prj-1", "esterilizacion-clinica-meds", "Infraestructura clínica", "Proyecto de Esterilización",
-     "Clínica Meds", "Lo Barnechea, RM",
+     "Clínica MEDS", "Lo Barnechea, RM",
      "Suministro, instalación y conexión del tablero de esterilización a la barra general de la clínica.",
-     "Técnico de C&amp;K trabajando en altura durante el Proyecto de Esterilización de Clínica Meds"),
+     "Técnico de C&amp;K trabajando en altura durante el Proyecto de Esterilización de Clínica MEDS"),
     ("prj-2", "bureau-veritas-calama", "Media tensión", "Proyecto Bureau Veritas Calama",
      "Bureau Veritas Laboratorio Minero", "Calama, Antofagasta",
      "Diseño y construcción de empalme en media tensión, con conexión de 1,6 MVA.",
@@ -215,6 +219,10 @@ PAGES = [
      "Servicios — C&amp;K Ingenieros",
      "Asesoría técnica y representación, ingeniería de diseño, construcción eléctrica, mantención "
      "especializada, instalación de equipos de alta complejidad, diagnóstico técnico y asesoría tarifaria."),
+    ("proyectos", "proyectos/index.html", "/proyectos/", "proyectos", "/contacto/",
+     "Proyectos — C&amp;K Ingenieros",
+     "Proyectos eléctricos ejecutados por C&amp;K Ingenieros: infraestructura clínica, instalaciones "
+     "industriales y media tensión, de Lo Barnechea a Calama."),
 ]
 
 
@@ -235,6 +243,7 @@ def build_page(tpl, out, path, nav, cta, title, desc, shared):
     if "{{LOGO_SLOTS}}" in html:
         html = (html.replace("{{LOGO_SLOTS_REPEAT}}", client_logos(repeat=True))
                     .replace("{{LOGO_SLOTS}}", client_logos()))
+    html = html.replace("{{PIN}}", PIN).replace("{{CHECK}}", CHECK)
     html = (html.replace("{{LOGO_WHITE}}", shared["LOGO_WHITE"]).replace("{{LOGO}}", shared["LOGO"])
                 .replace("{{ARROW}}", ARROW))
     if "{{KAREN}}" in html:
