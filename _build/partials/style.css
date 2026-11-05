@@ -282,7 +282,11 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
 .success__ico svg{width:28px;height:28px;stroke:var(--navy);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .success h3{margin-top:26px;font-size:clamp(1.8rem,3vw,2.3rem)}
 .success p{margin-top:14px;max-width:46ch}
-.success .link{margin-top:28px;align-self:flex-start}
+.success .link,.success .btn{margin-top:28px;align-self:flex-start}
+.success p + p{margin-top:10px}
+.success p a{color:var(--navy);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.failure__ico{background:#FCE8E6}
+.failure__ico svg{stroke:var(--danger);stroke-width:2.6}
 .alt{margin-top:24px;display:grid;gap:18px;padding:26px 28px;border-radius:var(--r-lg);background:var(--white)}
 @media (min-width:900px){.alt{grid-template-columns:auto 1fr auto;align-items:center;gap:36px}}
 .alt h3{font-size:18px;letter-spacing:-.01em}

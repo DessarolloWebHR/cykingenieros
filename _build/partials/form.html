@@ -1,0 +1,72 @@
+        <div class="form-wrap" id="form-wrap">
+          <h3>Solicitar evaluación especializada</h3>
+          <p class="sub">Los campos marcados con <span style="color:var(--gold-ink)">*</span> son obligatorios.</p>
+          <!-- ENVÍO: /api/contacto.php reenvía la solicitud al webhook de GoHighLevel (ver api/config.example.php). -->
+          <form class="form" id="lead-form" novalidate action="/api/contacto.php" method="post">
+            <div class="form__row">
+              <div class="field">
+                <label for="f-name">Nombre y apellido<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-name" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required aria-describedby="e-name">
+                <span class="err" id="e-name">Ingresa tu nombre y apellido.</span>
+              </div>
+              <div class="field">
+                <label for="f-company">Empresa u organización<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-company" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de la empresa" required aria-describedby="e-company">
+                <span class="err" id="e-company">Indica la empresa u organización.</span>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label for="f-email">Correo electrónico<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Tu correo de contacto" required aria-describedby="e-email">
+                <span class="err" id="e-email">Ingresa un correo electrónico válido.</span>
+              </div>
+              <div class="field">
+                <label for="f-spec">Especialidad requerida<span class="req" aria-hidden="true">*</span></label>
+                <div class="select">
+                  <select class="input" id="f-spec" name="especialidad" required aria-describedby="e-spec">
+                    <option value="" disabled selected>Selecciona una especialidad</option>
+                    <option>Asesoría técnica y representación</option>
+                    <option>Ingeniería de diseño</option>
+                    <option>Construcción eléctrica</option>
+                    <option>Mantención especializada</option>
+                    <option>Instalación de equipos de alta complejidad</option>
+                    <option>Equipos y diagnóstico técnico</option>
+                    <option>Asesoría tarifaria y cliente libre</option>
+                    <option>Otro</option>
+                  </select>
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 6 4.5 4.5L12.5 6"/></svg>
+                </div>
+                <span class="err" id="e-spec">Selecciona una especialidad.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-msg">Cuéntanos sobre tu proyecto<span class="req" aria-hidden="true">*</span></label>
+              <textarea class="input" id="f-msg" name="mensaje" rows="5" placeholder="Describe brevemente tu requerimiento o desafío técnico." required minlength="10" aria-describedby="e-msg"></textarea>
+              <span class="err" id="e-msg">Describe brevemente tu requerimiento (mínimo 10 caracteres).</span>
+            </div>
+            <input type="hidden" name="pagina" value="{{PATH}}">
+            <div class="hp" aria-hidden="true"><label for="f-website">No completar</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="privacy">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 3.5 4.5v5c0 4 2.8 7.2 6.5 8.5 3.7-1.3 6.5-4.5 6.5-8.5v-5L10 2Z"/><path d="m7 10 2 2 4-4"/></svg>
+              <p>{{FORM_PRIVACY}}</p>
+            </div>
+            <div class="form__actions">
+              <button class="btn btn--gold" type="submit">Enviar solicitud<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></button>
+              <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+        <div class="success" id="form-success" tabindex="-1" role="status" aria-live="polite">
+          <div class="success__ico" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="m7 15.5 5.5 5.5L23.5 9"/></svg></div>
+          <h3>Gracias por contactarnos.</h3>
+          <p>Hemos recibido tu solicitud. Nuestro equipo revisará la información y se comunicará contigo para evaluar los próximos pasos.</p>
+          <a class="btn btn--navy" href="/">Volver al inicio<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+        </div>
+        <div class="success failure" id="form-error" tabindex="-1" role="alert">
+          <div class="success__ico failure__ico" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="M15 8v9M15 21.5v.5"/></svg></div>
+          <h3>No pudimos enviar tu solicitud.</h3>
+          <p>Por favor, revisa los datos ingresados e inténtalo nuevamente.</p>
+          <p>Si el problema persiste, puedes escribirnos directamente a <a href="mailto:contacto@cykingenieros.cl">contacto@cykingenieros.cl</a> o contactarnos por <a href="https://wa.me/56987512250" target="_blank" rel="noopener">WhatsApp</a>.</p>
+          <button class="btn btn--navy" type="button" data-form-retry>Intentar nuevamente<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></button>
+        </div>

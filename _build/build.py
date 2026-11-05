@@ -205,6 +205,13 @@ def team_html():
     return "\n      ".join(out)
 
 
+FORM_PRIVACY = {
+    "default": 'Tratamos cada consulta y sus antecedentes técnicos y comerciales con reserva y discreción, '
+               'conforme a nuestra <a href="/politica-de-privacidad/">Política de Privacidad</a>.',
+    "contacto": 'Tus datos serán utilizados para responder y gestionar tu solicitud, de acuerdo con nuestra '
+                '<a href="/politica-de-privacidad/">Política de Privacidad</a>.',
+}
+
 PAGES = [
     # (template, output, path, nav key, header CTA href, title, description)
     ("home", "index.html", "/", "inicio", "#contacto",
@@ -223,11 +230,17 @@ PAGES = [
      "Proyectos — C&amp;K Ingenieros",
      "Proyectos eléctricos ejecutados por C&amp;K Ingenieros: infraestructura clínica, instalaciones "
      "industriales y media tensión, de Lo Barnechea a Calama."),
+    ("contacto", "contacto/index.html", "/contacto/", "contacto", "#formulario",
+     "Contacto — C&amp;K Ingenieros",
+     "Solicita una evaluación especializada a C&amp;K Ingenieros. Escríbenos a contacto@cykingenieros.cl "
+     "o por WhatsApp al +56 9 8751 2250. Atención directa y reservada."),
 ]
 
 
 def build_page(tpl, out, path, nav, cta, title, desc, shared):
     html = (BUILD / f"{tpl}.template.html").read_text(encoding="utf-8")
+    if "{{FORM}}" in html:
+        html = html.replace("{{FORM}}", shared["FORM"]).replace("{{FORM_PRIVACY}}", FORM_PRIVACY.get(nav, FORM_PRIVACY["default"]))
     for key in ("HEAD", "HEADER", "FOOTER"):
         html = html.replace("{{%s}}" % key, shared[key])
     html = html.replace("{{CSS}}", shared["CSS"]).replace("{{SCRIPT}}", shared["SCRIPT"])
@@ -262,6 +275,7 @@ def main():
         "HEAD": (PARTIALS / "head.html").read_text(encoding="utf-8"),
         "HEADER": (PARTIALS / "header.html").read_text(encoding="utf-8"),
         "FOOTER": (PARTIALS / "footer.html").read_text(encoding="utf-8"),
+        "FORM": (PARTIALS / "form.html").read_text(encoding="utf-8"),
         "CSS": (PARTIALS / "style.css").read_text(encoding="utf-8"),
         "SCRIPT": (PARTIALS / "script.js").read_text(encoding="utf-8"),
         "LOGO": logo, "LOGO_WHITE": logo_white,

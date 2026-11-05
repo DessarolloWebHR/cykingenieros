@@ -49,33 +49,32 @@
     el.addEventListener('input',function(){if(el.closest('.field').classList.contains('has-error'))validateField(el);});
     el.addEventListener('change',function(){if(el.tagName==='SELECT')validateField(el);});
   });
-  function showSuccess(){
-    d.getElementById('form-wrap').hidden=true;
-    var s=d.getElementById('form-success');
-    s.classList.add('is-visible');
-    s.focus({preventScroll:true});
-    s.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  var wrap=d.getElementById('form-wrap'), okPanel=d.getElementById('form-success'), errPanel=d.getElementById('form-error');
+  function showPanel(p){
+    wrap.hidden=true;okPanel.classList.remove('is-visible');errPanel.classList.remove('is-visible');
+    p.classList.add('is-visible');
+    p.focus({preventScroll:true});
+    p.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
   }
+  d.querySelector('[data-form-retry]').addEventListener('click',function(){
+    errPanel.classList.remove('is-visible');wrap.hidden=false;
+    var f=form.querySelector('.input');f&&f.focus();
+  });
   function setStatus(msg,err){status.textContent=msg;status.classList.toggle('is-error',!!err);}
   form.addEventListener('submit',function(e){
     e.preventDefault();setStatus('');
     var firstBad=null;
     form.querySelectorAll('.input').forEach(function(el){if(!validateField(el)&&!firstBad)firstBad=el;});
     if(firstBad){firstBad.focus();setStatus('Revisa los campos marcados.',true);return;}
-    if(form.website.value||Date.now()-started<2500){showSuccess();return;}
-    var endpoint=form.getAttribute('data-endpoint');
-    if(!endpoint){
-      var body='Nombre: '+form.nombre.value+'\nEmpresa: '+form.empresa.value+'\nCorreo: '+form.email.value+'\nEspecialidad: '+form.especialidad.value+'\n\n'+form.mensaje.value;
-      window.location.href='mailto:'+form.getAttribute('data-mailto')+'?subject='+encodeURIComponent('Solicitud de evaluación — '+form.especialidad.value)+'&body='+encodeURIComponent(body);
-      setStatus('Abrimos tu aplicación de correo con la solicitud lista para enviar.');
-      return;
-    }
-    var data=new FormData(form);data.delete('website');
-    data.append('_subject','Nueva solicitud de evaluación — '+form.especialidad.value);
+    /* Anti-spam: honeypot + minimum time on page (also checked on the server) */
+    if(form.website.value||Date.now()-started<2500){showPanel(okPanel);return;}
+    var data=new FormData(form);
+    data.append('ms',String(Date.now()-started));
     btn.setAttribute('aria-busy','true');
-    fetch(endpoint,{method:'POST',body:data,headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok)throw new Error(r.status);showSuccess();})
-      .catch(function(){setStatus('No pudimos enviar tu solicitud. Inténtalo nuevamente o escríbenos a contacto@cykingenieros.cl.',true);})
+    fetch(form.getAttribute('action'),{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||!j.ok)throw new Error(r.status);});})
+      .then(function(){form.reset();showPanel(okPanel);})
+      .catch(function(){showPanel(errPanel);})
       .then(function(){btn.removeAttribute('aria-busy');});
   });
   })();
