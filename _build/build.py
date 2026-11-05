@@ -6,11 +6,18 @@ them as base64 data URIs, so the output is a single self-contained HTML file.
 Photos in _build/photos/ are free-licence Unsplash images used as references
 until C&K supplies its own project photography.
 
-Usage:  python3 _build/build.py
+Usage:
+  python3 _build/build.py          single-file previews (images inlined) in the repo root
+  python3 _build/build.py --prod   production site in dist/ for Hostinger public_html/:
+                                   WebP images (each <= 100 KB) in assets/img, shared CSS/JS
+                                   as cached files, robots.txt, sitemap.xml, .htaccess, api/
 """
 import base64
+import hashlib
 import re
 import io
+import shutil
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -19,6 +26,12 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 BUILD = ROOT / "_build"
 PARTIALS = BUILD / "partials"
+PROD = "--prod" in sys.argv
+OUT_ROOT = ROOT / "dist" if PROD else ROOT
+SITE = "https://cykingenieros.cl"
+IMG_DIR = OUT_ROOT / "assets" / "img"
+MAX_IMG_BYTES = 100 * 1024
+_emitted = {}
 
 ARROW = ('<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>')
@@ -75,13 +88,45 @@ def b64(data: bytes, mime: str) -> str:
     return f"data:{mime};base64," + base64.b64encode(data).decode()
 
 
-def jpeg(img: Image.Image, quality=72) -> str:
+def webp_bytes(img: Image.Image) -> bytes:
+    """Encode as WebP, lowering quality (then size) until the file is <= 100 KB."""
+    img = img.convert("RGBA") if img.mode in ("RGBA", "LA", "P") else img.convert("RGB")
+    while True:
+        for q in (82, 76, 70, 64, 58, 52):
+            buf = io.BytesIO()
+            img.save(buf, "WEBP", quality=q, method=6)
+            if buf.tell() <= MAX_IMG_BYTES:
+                return buf.getvalue()
+        img = img.resize((int(img.width * .85), int(img.height * .85)), Image.LANCZOS)
+
+
+def emit(img: Image.Image, name: str) -> str:
+    """Production: write assets/img/<name>.webp once and return its URL."""
+    if name not in _emitted:
+        data = webp_bytes(img)
+        IMG_DIR.mkdir(parents=True, exist_ok=True)
+        (IMG_DIR / f"{name}.webp").write_bytes(data)
+        _emitted[name] = f"/assets/img/{name}.webp"
+    return _emitted[name]
+
+
+def slug(text: str) -> str:
+    import unicodedata
+    t = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
+
+
+def jpeg(img: Image.Image, quality=72, name=None) -> str:
+    if PROD:
+        return emit(img, name or "img-" + hashlib.sha1(img.tobytes()).hexdigest()[:10])
     buf = io.BytesIO()
     img.convert("RGB").save(buf, "JPEG", quality=quality, optimize=True, progressive=True)
     return b64(buf.getvalue(), "image/jpeg")
 
 
-def png(img: Image.Image) -> str:
+def png(img: Image.Image, name=None) -> str:
+    if PROD:
+        return emit(img, name or "img-" + hashlib.sha1(img.tobytes()).hexdigest()[:10])
     buf = io.BytesIO()
     img.save(buf, "PNG", optimize=True)
     return b64(buf.getvalue(), "image/png")
@@ -108,13 +153,34 @@ def logos():
     knock = indigo.copy()
     knock[split:, :] = False
     white[knock, 3] = 0
+    white = Image.fromarray(white.astype("uint8"))
+    if PROD:
+        return png(logo, "logo-cyk"), png(white, "logo-cyk-blanco")
     q = lambda im: im.quantize(colors=96, method=Image.Quantize.FASTOCTREE)
-    return png(q(logo)), png(q(Image.fromarray(white.astype("uint8"))))
+    return png(q(logo)), png(q(white))
+
+
+def favicon():
+    """Square icon from the round C&K mark (top part of the logo)."""
+    logo = Image.open(ROOT / "Transparente.png").convert("RGBA")
+    logo = logo.crop(logo.getbbox())
+    mark = logo.crop((0, 0, logo.width, int(logo.height * 0.55)))
+    mark = mark.crop(mark.getbbox())
+    side = max(mark.size)
+    sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    sq.alpha_composite(mark, ((side - mark.width) // 2, (side - mark.height) // 2))
+    sq = sq.resize((64, 64), Image.LANCZOS)
+    buf = io.BytesIO()
+    sq.save(buf, "PNG", optimize=True)
+    if PROD:
+        (OUT_ROOT / "favicon.png").write_bytes(buf.getvalue())
+        return "/favicon.png"
+    return b64(buf.getvalue(), "image/png")
 
 
 def photo(name):
     img = Image.open(BUILD / "photos" / f"{name}.jpg")
-    return jpeg(resize(img, PHOTO_WIDTHS.get(name, 900)))
+    return jpeg(resize(img, PHOTO_WIDTHS.get(name, 900)), name=name)
 
 
 def services_html():
@@ -157,13 +223,13 @@ def client_logos(repeat=False):
     """Approved client logos (grey-tinted in CSS). repeat=True renders a decorative,
     screen-reader-hidden copy used to keep the marquee wider than the viewport."""
     out = []
-    for slug, name in CLIENTS:
-        img = Image.open(BUILD / "clients" / f"{slug}.png").convert("RGBA")
+    for key, name in CLIENTS:
+        img = Image.open(BUILD / "clients" / f"{key}.png").convert("RGBA")
         img = img.resize((round(img.width * 110 / img.height), 110), Image.LANCZOS) if img.height > 110 else img
         img = Image.merge("LA", (Image.new("L", img.size, 0), img.getchannel("A")))  # colour comes from CSS
         alt = "" if repeat else name
         hidden = ' aria-hidden="true"' if repeat else ""
-        out.append(f'<li{hidden}><img src="{png(img)}" alt="{alt}" width="{img.width}" height="{img.height}" loading="lazy"></li>')
+        out.append(f'<li{hidden}><img src="{png(img, "cliente-" + key)}" alt="{alt}" width="{img.width}" height="{img.height}" loading="lazy"></li>')
     return "".join(out)
 
 
@@ -180,14 +246,14 @@ TEAM = [
 ]
 
 
-def portrait(path, w=560):
+def portrait(path, name, w=560):
     """Crop a portrait to 4:5 (keeping the head near the top) and encode it."""
     img = Image.open(ROOT / path).convert("RGB")
     target = img.width * 5 / 4
     if img.height > target:
         top = int((img.height - target) * 0.15)
         img = img.crop((0, top, img.width, top + int(target)))
-    return jpeg(resize(img, w), 78)
+    return jpeg(resize(img, w), 78, name="equipo-" + slug(name))
 
 
 def team_html():
@@ -198,7 +264,7 @@ def team_html():
         lead = " member--lead" if i == 0 else ""
         out.append(
             f'<li class="member{lead}" data-reveal style="--d:{(i % 4) * 80}">'
-            f'<div class="member__photo"><img src="{portrait(path)}" alt="{name}, C&amp;K Ingenieros" '
+            f'<div class="member__photo"><img src="{portrait(path, name)}" alt="{name}, C&amp;K Ingenieros" '
             f'width="560" height="700" loading="lazy"></div>'
             f'<h3>{name}</h3>{role_html}</li>'
         )
@@ -234,6 +300,10 @@ PAGES = [
      "Contacto — C&amp;K Ingenieros",
      "Solicita una evaluación especializada a C&amp;K Ingenieros. Escríbenos a contacto@cykingenieros.cl "
      "o por WhatsApp al +56 9 8751 2250. Atención directa y reservada."),
+    ("privacidad", "politica-de-privacidad/index.html", "/politica-de-privacidad/", "privacidad", "/contacto/",
+     "Política de Privacidad — C&amp;K Ingenieros",
+     "Política de Privacidad de CYK Ingeniería y Construcción Eléctrica SpA: tratamiento y resguardo de "
+     "los datos personales y la información técnica y comercial de clientes."),
 ]
 
 
@@ -243,7 +313,13 @@ def build_page(tpl, out, path, nav, cta, title, desc, shared):
         html = html.replace("{{FORM}}", shared["FORM"]).replace("{{FORM_PRIVACY}}", FORM_PRIVACY.get(nav, FORM_PRIVACY["default"]))
     for key in ("HEAD", "HEADER", "FOOTER"):
         html = html.replace("{{%s}}" % key, shared[key])
+    if PROD:
+        html = (html.replace("<style>\n{{CSS}}", '<link rel="stylesheet" href="/assets/css/site.css">\n<style>')
+                    .replace("<script>\n{{SCRIPT}}", '<script src="/assets/js/site.js"></script>\n<script>')
+                    .replace("<script></script>\n", ""))
+        html = html.replace("</head>", f'<meta property="og:image" content="{SITE}/assets/img/og-cyk.jpg">\n</head>', 1)
     html = html.replace("{{CSS}}", shared["CSS"]).replace("{{SCRIPT}}", shared["SCRIPT"])
+    html = html.replace("{{FAVICON}}", shared["FAVICON"])
     html = (html.replace("{{TITLE}}", title).replace("{{DESC}}", desc)
                 .replace("{{PATH}}", path).replace("{{CTA_HREF}}", cta))
     html = re.sub(r"\{\{CUR:(\w+)\}\}", lambda m: ' aria-current="page"' if m.group(1) == nav else "", html)
@@ -263,13 +339,17 @@ def build_page(tpl, out, path, nav, cta, title, desc, shared):
         html = html.replace("{{KAREN}}", shared["KAREN"])
     html = re.sub(r"\{\{IMG:([\w-]+)\}\}", lambda m: photo(m.group(1)), html)
     assert "{{" not in html, html[html.index("{{"):html.index("{{") + 40]
-    dest = ROOT / out
+    dest = OUT_ROOT / out
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(html, encoding="utf-8")
     print(f"wrote {out} ({dest.stat().st_size / 1024:.0f} KB)")
 
 
 def main():
+    if PROD:
+        if OUT_ROOT.exists():
+            shutil.rmtree(OUT_ROOT)
+        OUT_ROOT.mkdir()
     logo, logo_white = logos()
     shared = {
         "HEAD": (PARTIALS / "head.html").read_text(encoding="utf-8"),
@@ -279,11 +359,39 @@ def main():
         "CSS": (PARTIALS / "style.css").read_text(encoding="utf-8"),
         "SCRIPT": (PARTIALS / "script.js").read_text(encoding="utf-8"),
         "LOGO": logo, "LOGO_WHITE": logo_white,
-        "KAREN": jpeg(resize(Image.open(ROOT / "Fotografia Karen Rodriìguez.jpg"), 680), 80),
+        "KAREN": jpeg(resize(Image.open(ROOT / "Fotografia Karen Rodriìguez.jpg"), 680), 80, name="karen-rodriguez"),
     }
+    shared["FAVICON"] = favicon()
     for page in PAGES:
         if (BUILD / f"{page[0]}.template.html").exists():
             build_page(*page, shared)
+    if PROD:
+        write_production_extras(shared)
+
+
+def write_production_extras(shared):
+    css_dir, js_dir = OUT_ROOT / "assets" / "css", OUT_ROOT / "assets" / "js"
+    css_dir.mkdir(parents=True, exist_ok=True)
+    js_dir.mkdir(parents=True, exist_ok=True)
+    (css_dir / "site.css").write_text(shared["CSS"], encoding="utf-8")
+    (js_dir / "site.js").write_text(shared["SCRIPT"], encoding="utf-8")
+    # Link-preview image (1200x630) for social sharing.
+    og = Image.open(BUILD / "photos" / "hero.jpg").convert("RGB")
+    og = og.resize((1200, round(og.height * 1200 / og.width)), Image.LANCZOS)
+    top = (og.height - 630) // 2
+    og.crop((0, top, 1200, top + 630)).save(IMG_DIR / "og-cyk.jpg", quality=80, optimize=True, progressive=True)
+    # api/ (form relay) without the server-only config.
+    shutil.copytree(ROOT / "api", OUT_ROOT / "api", ignore=shutil.ignore_patterns("config.php", "README.md"))
+    for f in ("robots.txt", ".htaccess", "LEEME-DESPLIEGUE.md"):
+        shutil.copy(BUILD / "static" / f, OUT_ROOT / f)
+    urls = "".join(f"  <url><loc>{SITE}{p[2]}</loc></url>\n" for p in PAGES)
+    (OUT_ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n", encoding="utf-8")
+    total = sum(f.stat().st_size for f in OUT_ROOT.rglob("*") if f.is_file())
+    imgs = sorted(IMG_DIR.glob("*.webp"), key=lambda f: -f.stat().st_size)
+    print(f"dist/: {len(imgs)} WebP images, largest {imgs[0].name} {imgs[0].stat().st_size / 1024:.0f} KB; "
+          f"total site {total / 1024:.0f} KB")
 
 
 if __name__ == "__main__":
