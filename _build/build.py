@@ -1,4 +1,4 @@
-"""Build the standalone homepage (index.html) from home.template.html.
+"""Build the standalone site pages from _build/*.template.html + _build/partials/.
 
 Optimizes the repository images and the photos in _build/photos/ and inlines
 them as base64 data URIs, so the output is a single self-contained HTML file.
@@ -6,9 +6,10 @@ them as base64 data URIs, so the output is a single self-contained HTML file.
 Photos in _build/photos/ are free-licence Unsplash images used as references
 until C&K supplies its own project photography.
 
-Usage:  python3 _build/build_home.py
+Usage:  python3 _build/build.py
 """
 import base64
+import re
 import io
 from pathlib import Path
 
@@ -17,14 +18,14 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 BUILD = ROOT / "_build"
-TEMPLATE = BUILD / "home.template.html"
-OUT = ROOT / "index.html"
+PARTIALS = BUILD / "partials"
 
 ARROW = ('<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>')
 
 # name -> output width
-PHOTO_WIDTHS = {"hero": 2000, "approach": 1200, "svc-tarifaria": 1100}
+PHOTO_WIDTHS = {"hero": 2000, "approach": 1200, "svc-tarifaria": 1100, "nos-hero": 1400,
+                "nos-filosofia": 1100, "nos-confidencialidad": 1100}
 
 SERVICES = [
     ("asesoria-tecnica", "svc-asesoria", "Equipo técnico revisando una obra en terreno",
@@ -161,23 +162,60 @@ def client_logos(repeat=False):
     return "".join(out)
 
 
+PAGES = [
+    # (template, output, path, nav key, header CTA href, title, description)
+    ("home", "index.html", "/", "inicio", "#contacto",
+     "C&amp;K Ingenieros — Asesoría, Ingeniería y Construcción Eléctrica",
+     "Ingeniería eléctrica especializada: asesoría técnica, ingeniería de diseño, construcción eléctrica, "
+     "mantención y diagnóstico para salud, industria y agro. Rigor y precisión en cada proyecto."),
+    ("nosotros", "nosotros/index.html", "/nosotros/", "nosotros", "/contacto/",
+     "Nosotros — C&amp;K Ingenieros",
+     "Empresa chilena de ingeniería y construcción eléctrica. Experiencia técnica, atención personalizada "
+     "y una metodología de trabajo basada en evidencia: levantar, analizar, resolver y verificar."),
+]
+
+
+def build_page(tpl, out, path, nav, cta, title, desc, shared):
+    html = (BUILD / f"{tpl}.template.html").read_text(encoding="utf-8")
+    for key in ("HEAD", "HEADER", "FOOTER"):
+        html = html.replace("{{%s}}" % key, shared[key])
+    html = html.replace("{{CSS}}", shared["CSS"]).replace("{{SCRIPT}}", shared["SCRIPT"])
+    html = (html.replace("{{TITLE}}", title).replace("{{DESC}}", desc)
+                .replace("{{PATH}}", path).replace("{{CTA_HREF}}", cta))
+    html = re.sub(r"\{\{CUR:(\w+)\}\}", lambda m: ' aria-current="page"' if m.group(1) == nav else "", html)
+    if "{{SERVICES}}" in html:
+        html = html.replace("{{SERVICES}}", services_html())
+    if "{{PROJECTS}}" in html:
+        html = html.replace("{{PROJECTS}}", projects_html())
+    if "{{LOGO_SLOTS}}" in html:
+        html = (html.replace("{{LOGO_SLOTS_REPEAT}}", client_logos(repeat=True))
+                    .replace("{{LOGO_SLOTS}}", client_logos()))
+    html = (html.replace("{{LOGO_WHITE}}", shared["LOGO_WHITE"]).replace("{{LOGO}}", shared["LOGO"])
+                .replace("{{ARROW}}", ARROW))
+    if "{{KAREN}}" in html:
+        html = html.replace("{{KAREN}}", shared["KAREN"])
+    html = re.sub(r"\{\{IMG:([\w-]+)\}\}", lambda m: photo(m.group(1)), html)
+    assert "{{" not in html, html[html.index("{{"):html.index("{{") + 40]
+    dest = ROOT / out
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(html, encoding="utf-8")
+    print(f"wrote {out} ({dest.stat().st_size / 1024:.0f} KB)")
+
+
 def main():
     logo, logo_white = logos()
-    karen = jpeg(resize(Image.open(ROOT / "Fotografia Karen Rodriìguez.jpg"), 680), 80)
-    html = TEMPLATE.read_text(encoding="utf-8")
-    html = (html.replace("{{SERVICES}}", services_html())
-                .replace("{{PROJECTS}}", projects_html())
-                .replace("{{LOGO_SLOTS_REPEAT}}", client_logos(repeat=True))
-                .replace("{{LOGO_SLOTS}}", client_logos())
-                .replace("{{LOGO_WHITE}}", logo_white)
-                .replace("{{LOGO}}", logo)
-                .replace("{{KAREN}}", karen)
-                .replace("{{ARROW}}", ARROW))
-    for name in ("hero", "approach", "svc-tarifaria", "ind-salud", "ind-industria", "ind-agro"):
-        html = html.replace("{{IMG:%s}}" % name, photo(name))
-    assert "{{" not in html, html[html.index("{{"):html.index("{{") + 40]
-    OUT.write_text(html, encoding="utf-8")
-    print(f"wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size / 1024:.0f} KB)")
+    shared = {
+        "HEAD": (PARTIALS / "head.html").read_text(encoding="utf-8"),
+        "HEADER": (PARTIALS / "header.html").read_text(encoding="utf-8"),
+        "FOOTER": (PARTIALS / "footer.html").read_text(encoding="utf-8"),
+        "CSS": (PARTIALS / "style.css").read_text(encoding="utf-8"),
+        "SCRIPT": (PARTIALS / "script.js").read_text(encoding="utf-8"),
+        "LOGO": logo, "LOGO_WHITE": logo_white,
+        "KAREN": jpeg(resize(Image.open(ROOT / "Fotografia Karen Rodriìguez.jpg"), 680), 80),
+    }
+    for page in PAGES:
+        if (BUILD / f"{page[0]}.template.html").exists():
+            build_page(*page, shared)
 
 
 if __name__ == "__main__":
