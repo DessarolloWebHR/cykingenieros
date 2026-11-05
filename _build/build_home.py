@@ -48,9 +48,10 @@ SERVICES = [
 ]
 
 PROJECTS = [
-    ("prj-1", "Infraestructura clínica"),
-    ("prj-2", "Construcción eléctrica"),
-    ("prj-3", "Agro y viñedos"),
+    # Real C&K project photos supplied by the client. Names and descriptions pending.
+    ("prj-1", "Media tensión", "Técnico de C&K trabajando en un poste de media tensión durante el montaje de un transformador"),
+    ("prj-2", "Construcción eléctrica", "Estructuras de media tensión instaladas en un recinto industrial"),
+    ("prj-3", "Instalación de equipos", "Equipos de climatización industrial instalados en una azotea"),
 ]
 
 
@@ -107,11 +108,11 @@ def services_html():
 
 def projects_html():
     out = []
-    for i, (img, sector) in enumerate(PROJECTS):
+    for i, (img, sector, alt) in enumerate(PROJECTS):
         out.append(
             f'<li class="prj" data-reveal style="--d:{i * 90}">'
-            f'<div class="prj__media"><span class="prj__badge">Proyecto por confirmar</span>'
-            f'<img src="{photo(img)}" alt="Imagen referencial — {sector}" width="900" height="600" loading="lazy"></div>'
+            f'<div class="prj__media"><span class="prj__badge">Detalles por confirmar</span>'
+            f'<img src="{photo(img)}" alt="{alt}" width="460" height="610" loading="lazy"></div>'
             f'<div class="prj__body"><span class="prj__sector">{sector}</span>'
             f'<h3>Nombre del proyecto</h3>'
             f'<p>Breve descripción del trabajo realizado. Espacio reservado para un proyecto real aprobado por C&amp;K.</p>'
