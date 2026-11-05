@@ -74,17 +74,16 @@
 .step p{margin-top:12px;font-size:15.5px;color:var(--on-dark)}
 
 /* Equipo */
-.team__grid{display:grid;gap:26px}
-@media (min-width:700px){.team__grid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1060px){.team__grid{grid-template-columns:repeat(3,1fr)}}
-.member__photo{position:relative;aspect-ratio:4/4.6;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(160deg,var(--cloud),var(--line));display:grid;place-items:center}
-.member__photo img{width:38%;height:auto;opacity:.16;filter:grayscale(1)}
-.member__photo span{position:absolute;left:14px;top:14px;padding:7px 12px;border-radius:999px;background:var(--white);color:var(--muted);font-size:12px;font-weight:600}
-@media (max-width:699px){.member__photo{aspect-ratio:4/3}}
-.member h3{margin-top:22px;font-size:1.3rem;letter-spacing:-.018em}
-.member__role{display:block;margin-top:6px;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
-.member p{margin-top:12px;font-size:15.5px;color:var(--muted)}
-.team__note{margin-top:36px;text-align:center;font-size:14px;font-style:italic;color:var(--muted)}
+.team__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 16px}
+@media (min-width:900px){.team__grid{grid-template-columns:repeat(4,1fr);gap:40px 24px}}
+.member__photo{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:var(--cloud)}
+.member__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:transform 1s var(--ease-out)}
+.member:hover .member__photo img{transform:scale(1.04)}
+.member--lead .member__photo{box-shadow:0 0 0 3px var(--gold)}
+.member h3{margin-top:18px;font-size:clamp(1.05rem,1.5vw,1.25rem);letter-spacing:-.015em}
+.member__role{display:inline-flex;margin-top:8px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+.member--lead .member__role{padding:5px 11px;border-radius:999px;background:var(--gold);color:var(--navy);letter-spacing:.06em}
+.member__role--pending{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none;font-size:13.5px}
 
 /* Confidencialidad */
 .trust{background:var(--cloud)}
@@ -201,7 +200,7 @@
   </div>
 </section>
 
-<!-- 05 · NUESTRO EQUIPO — DEV: contenido provisional; fotografías y datos pendientes de selección y aprobación -->
+<!-- 05 · NUESTRO EQUIPO — DEV: cargos pendientes de confirmación -->
 <section class="section team" id="equipo" aria-labelledby="team-title">
   <div class="container">
     <div class="head head--split">
@@ -212,23 +211,8 @@
       <div class="lead" data-reveal style="--d:140"><p>Detrás de cada proyecto hay profesionales que aportan conocimiento técnico, experiencia en terreno y dedicación.</p><p style="margin-top:12px">En C&amp;K Ingenieros valoramos el trabajo colaborativo, la comunicación directa y el compromiso con cada cliente.</p></div>
     </div>
     <ul class="team__grid">
-      <li class="member" data-reveal>
-        <div class="member__photo"><span>Fotografía pendiente</span><img src="{{LOGO}}" alt="" width="640" height="229"></div>
-        <h3>[Nombre y apellido]</h3><span class="member__role">[Cargo / Especialidad]</span>
-        <p>[Breve descripción de su trayectoria profesional, área de especialización y responsabilidades dentro de C&amp;K Ingenieros.]</p>
-      </li>
-      <li class="member" data-reveal style="--d:90">
-        <div class="member__photo"><span>Fotografía pendiente</span><img src="{{LOGO}}" alt="" width="640" height="229"></div>
-        <h3>[Nombre y apellido]</h3><span class="member__role">[Cargo / Especialidad]</span>
-        <p>[Breve descripción de su experiencia técnica, los proyectos en los que participa y su aporte al trabajo del equipo.]</p>
-      </li>
-      <li class="member" data-reveal style="--d:180">
-        <div class="member__photo"><span>Fotografía pendiente</span><img src="{{LOGO}}" alt="" width="640" height="229"></div>
-        <h3>[Nombre y apellido]</h3><span class="member__role">[Cargo / Especialidad]</span>
-        <p>[Breve descripción de sus competencias, principales responsabilidades y enfoque profesional.]</p>
-      </li>
+      {{TEAM}}
     </ul>
-    <p class="team__note" data-reveal>Fotografías individuales pendientes de selección y aprobación.</p>
   </div>
 </section>
 

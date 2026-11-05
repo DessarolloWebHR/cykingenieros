@@ -162,6 +162,44 @@ def client_logos(repeat=False):
     return "".join(out)
 
 
+TEAM = [
+    # (file, name, role). Karen first; other roles pending confirmation from C&K.
+    ("Fotografia Karen Rodriìguez.jpg", "Karen Rodríguez", "Gerenta General"),
+    ("Fotos-Equipo/10.Dani png.png", "Dani", None),
+    ("Fotos-Equipo/11.Natypng.png", "Naty", None),
+    ("Fotos-Equipo/3.Rubenpng.png", "Rubén", None),
+    ("Fotos-Equipo/4.Francisco png.png", "Francisco", None),
+    ("Fotos-Equipo/5.Hector png.png", "Héctor", None),
+    ("Fotos-Equipo/7.Marcopng.png", "Marco", None),
+    ("Fotos-Equipo/8.Claudio png.png", "Claudio", None),
+]
+
+
+def portrait(path, w=560):
+    """Crop a portrait to 4:5 (keeping the head near the top) and encode it."""
+    img = Image.open(ROOT / path).convert("RGB")
+    target = img.width * 5 / 4
+    if img.height > target:
+        top = int((img.height - target) * 0.15)
+        img = img.crop((0, top, img.width, top + int(target)))
+    return jpeg(resize(img, w), 78)
+
+
+def team_html():
+    out = []
+    for i, (path, name, role) in enumerate(TEAM):
+        role_html = (f'<span class="member__role">{role}</span>' if role
+                     else '<span class="member__role member__role--pending">Cargo por confirmar</span>')
+        lead = " member--lead" if i == 0 else ""
+        out.append(
+            f'<li class="member{lead}" data-reveal style="--d:{(i % 4) * 80}">'
+            f'<div class="member__photo"><img src="{portrait(path)}" alt="{name}, C&amp;K Ingenieros" '
+            f'width="560" height="700" loading="lazy"></div>'
+            f'<h3>{name}</h3>{role_html}</li>'
+        )
+    return "\n      ".join(out)
+
+
 PAGES = [
     # (template, output, path, nav key, header CTA href, title, description)
     ("home", "index.html", "/", "inicio", "#contacto",
@@ -185,6 +223,8 @@ def build_page(tpl, out, path, nav, cta, title, desc, shared):
     html = re.sub(r"\{\{CUR:(\w+)\}\}", lambda m: ' aria-current="page"' if m.group(1) == nav else "", html)
     if "{{SERVICES}}" in html:
         html = html.replace("{{SERVICES}}", services_html())
+    if "{{TEAM}}" in html:
+        html = html.replace("{{TEAM}}", team_html())
     if "{{PROJECTS}}" in html:
         html = html.replace("{{PROJECTS}}", projects_html())
     if "{{LOGO_SLOTS}}" in html:
