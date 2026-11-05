@@ -48,10 +48,20 @@ SERVICES = [
 ]
 
 PROJECTS = [
-    # Real C&K project photos supplied by the client. Names and descriptions pending.
-    ("prj-1", "Media tensión", "Técnico de C&K trabajando en un poste de media tensión durante el montaje de un transformador"),
-    ("prj-2", "Construcción eléctrica", "Estructuras de media tensión instaladas en un recinto industrial"),
-    ("prj-3", "Instalación de equipos", "Equipos de climatización industrial instalados en una azotea"),
+    # (photo, slug, sector, title, client, location, description, alt) — real C&K projects
+    # from the previous website; photos supplied by the client.
+    ("prj-1", "esterilizacion-clinica-meds", "Infraestructura clínica", "Proyecto de Esterilización",
+     "Clínica Meds", "Lo Barnechea, RM",
+     "Suministro, instalación y conexión del tablero de esterilización a la barra general de la clínica.",
+     "Técnico de C&amp;K trabajando en altura durante el Proyecto de Esterilización de Clínica Meds"),
+    ("prj-2", "bureau-veritas-calama", "Media tensión", "Proyecto Bureau Veritas Calama",
+     "Bureau Veritas Laboratorio Minero", "Calama, Antofagasta",
+     "Diseño y construcción de empalme en media tensión, con conexión de 1,6 MVA.",
+     "Estructuras de media tensión del empalme construido para Bureau Veritas en Calama"),
+    ("prj-3", "hospital-mutual-alameda", "Climatización hospitalaria", "Proyecto Hospital Mutual Alameda",
+     "Mutual de Seguridad", "Estación Central, RM",
+     "Diseño, construcción y conexión de la nueva central de climatización Daikin.",
+     "Central de climatización Daikin instalada en la azotea del Hospital Mutual Alameda"),
 ]
 
 
@@ -108,15 +118,15 @@ def services_html():
 
 def projects_html():
     out = []
-    for i, (img, sector, alt) in enumerate(PROJECTS):
+    for i, (img, slug, sector, title, client, place, desc, alt) in enumerate(PROJECTS):
         out.append(
             f'<li class="prj" data-reveal style="--d:{i * 90}">'
-            f'<div class="prj__media"><span class="prj__badge">Detalles por confirmar</span>'
+            f'<div class="prj__media"><span class="prj__badge">{place}</span>'
             f'<img src="{photo(img)}" alt="{alt}" width="460" height="610" loading="lazy"></div>'
             f'<div class="prj__body"><span class="prj__sector">{sector}</span>'
-            f'<h3>Nombre del proyecto</h3>'
-            f'<p>Breve descripción del trabajo realizado. Espacio reservado para un proyecto real aprobado por C&amp;K.</p>'
-            f'<a class="link" href="/proyectos/">Ver proyecto {ARROW}</a></div></li>'
+            f'<h3>{title}</h3><span class="prj__client">{client}</span>'
+            f'<p>{desc}</p>'
+            f'<a class="link" href="/proyectos/#{slug}">Ver proyecto {ARROW}</a></div></li>'
         )
     return "\n      ".join(out)
 
