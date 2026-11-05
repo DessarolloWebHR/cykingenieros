@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nosotros — C&amp;K Ingenieros</title>
+<meta name="description" content="Empresa chilena de ingeniería y construcción eléctrica. Experiencia técnica, atención personalizada y una metodología de trabajo basada en evidencia: levantar, analizar, resolver y verificar.">
+<link rel="canonical" href="https://cykingenieros.cl/nosotros/">
+<meta name="theme-color" content="#081E47">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="C&amp;K Ingenieros">
+<meta property="og:title" content="Nosotros — C&amp;K Ingenieros">
+<meta property="og:description" content="Empresa chilena de ingeniería y construcción eléctrica. Experiencia técnica, atención personalizada y una metodología de trabajo basada en evidencia: levantar, analizar, resolver y verificar.">
+<meta property="og:url" content="https://cykingenieros.cl/nosotros/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "C&K Ingenieros",
+  "legalName": "CYK Ingeniería y Construcción Eléctrica SpA",
+  "url": "https://cykingenieros.cl/",
+  "email": "contacto@cykingenieros.cl",
+  "telephone": "+56 9 8751 2250",
+  "areaServed": "CL",
+  "slogan": "Comprender tu operación. Resolver lo complejo. Anticipar lo que viene."
+}
+</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+
+/* =================== Nosotros =================== */
+/* Quiénes somos */
+.about__grid{display:grid;gap:56px;align-items:center}
+@media (min-width:1000px){.about__grid{grid-template-columns:1fr 1fr;gap:88px}}
+.about__copy .lead{margin-top:26px;color:var(--ink)}
+.about__copy p + p{margin-top:16px}
+.about__copy p:not(.lead):not(.eyebrow){max-width:56ch}
+.collage{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.collage figure{margin:0;border-radius:var(--r-lg);overflow:hidden;background:var(--line)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .c1{aspect-ratio:3/4.2;grid-row:span 2}
+.collage .c2{aspect-ratio:1/1;margin-top:48px}
+.collage .c3{aspect-ratio:1/1}
+.sectors{margin-top:22px;padding:22px 24px;border-radius:var(--r-md);background:var(--cloud)}
+.sectors span{display:block;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:12px}
+.sectors ul{display:flex;flex-wrap:wrap;gap:8px}
+.sectors li{font-size:14px;font-weight:500;padding:8px 14px;border-radius:999px;background:var(--white);color:var(--ink)}
+.collage__cap{grid-column:1/-1;font-size:13px;color:var(--muted)}
+
+/* Filosofía */
+.philo{background:var(--cloud)}
+.philo__grid{display:grid;gap:56px;align-items:center}
+@media (min-width:1000px){.philo__grid{grid-template-columns:.95fr 1.05fr;gap:88px}}
+.philo__media{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/4.4;box-shadow:var(--shadow)}
+.philo__media img{width:100%;height:100%;object-fit:cover}
+.philo__copy .lead{margin-top:26px;color:var(--ink)}
+.belief{margin:30px 0 0;padding:26px 28px;border-radius:var(--r-md);background:var(--navy);color:var(--white);font-size:clamp(1.12rem,1.5vw,1.3rem);line-height:1.5;font-weight:500;letter-spacing:-.01em}
+.belief::before{content:"";display:block;width:36px;height:3px;border-radius:3px;background:var(--gold);margin-bottom:16px}
+.principles{margin-top:clamp(56px,7vw,88px)}
+.principles__label{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:22px}
+.principles ul{display:grid;gap:20px}
+@media (min-width:900px){.principles ul{grid-template-columns:repeat(3,1fr);gap:24px}}
+.principle{padding:32px 30px;border-radius:var(--r-lg);background:var(--white);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.principle:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.principle__n{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:15px}
+.principle h3{margin-top:24px;font-size:clamp(1.25rem,1.7vw,1.45rem);letter-spacing:-.02em}
+.principle p{margin-top:12px;font-size:15.5px}
+
+/* Metodología */
+.method{background:var(--navy)}
+.steps{position:relative;display:grid;gap:22px;counter-reset:s}
+@media (min-width:700px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.steps{grid-template-columns:repeat(4,1fr)}
+  .steps::before{content:"";position:absolute;left:12%;right:12%;top:62px;height:1px;background:linear-gradient(90deg,rgba(215,178,87,.0),rgba(215,178,87,.6) 12%,rgba(215,178,87,.6) 88%,rgba(215,178,87,0))}}
+.step{position:relative;padding:34px 28px 32px;border-radius:var(--r-lg);background:rgba(255,255,255,.04);border:1px solid var(--on-dark-line);transition:background-color .35s,border-color .35s}
+.step:hover{background:rgba(255,255,255,.07);border-color:rgba(215,178,87,.45)}
+.step__n{position:relative;z-index:1;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:17px;box-shadow:0 0 0 8px var(--navy)}
+.step__k{display:block;margin-top:26px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.step h3{margin-top:8px;color:var(--white);font-size:clamp(1.4rem,1.9vw,1.65rem);letter-spacing:-.022em}
+.step p{margin-top:12px;font-size:15.5px;color:var(--on-dark)}
+
+/* Equipo */
+.team__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 16px}
+@media (min-width:900px){.team__grid{grid-template-columns:repeat(4,1fr);gap:40px 24px}}
+.member__photo{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:var(--cloud)}
+.member__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:transform 1s var(--ease-out)}
+.member:hover .member__photo img{transform:scale(1.04)}
+.member--lead .member__photo{box-shadow:0 0 0 3px var(--gold)}
+.member h3{margin-top:18px;font-size:clamp(1.05rem,1.5vw,1.25rem);letter-spacing:-.015em}
+.member__role{display:inline-flex;margin-top:8px;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-ink)}
+.member--lead .member__role{padding:5px 11px;border-radius:999px;background:var(--gold);color:var(--navy);letter-spacing:.06em}
+.member__role--pending{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none;font-size:13.5px}
+
+/* Confidencialidad */
+.trust{background:var(--cloud)}
+.trust__grid{display:grid;gap:56px;align-items:center}
+@media (min-width:1000px){.trust__grid{grid-template-columns:1.05fr .95fr;gap:88px}}
+.trust__copy .lead{margin-top:26px;color:var(--ink)}
+.trust__copy p + p{margin-top:16px}
+.trust__media{position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/4.4;box-shadow:var(--shadow)}
+.trust__media img{width:100%;height:100%;object-fit:cover}
+.trust__seal{position:absolute;right:18px;top:18px;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:999px;background:var(--white);font-size:14px;font-weight:600;color:var(--ink)}
+.trust__seal i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--navy)}
+.trust__seal svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.trust__close{margin-top:28px;padding:22px 24px;border-radius:var(--r-md);background:var(--white);font-size:clamp(1.05rem,1.4vw,1.18rem);font-weight:600;line-height:1.5;color:var(--ink)}
+@media (min-width:1000px){.trust__media{order:2}}
+
+</style>
+<meta property="og:image" content="https://cykingenieros.cl/assets/img/og-cyk.jpg">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="header" id="top">
+  <div class="container header__bar">
+    <a class="brand" href="/" aria-label="C&amp;K Ingenieros — Inicio"><img src="/assets/img/logo-cyk.webp" alt="C&amp;K Ingenieros" width="640" height="229"></a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/nosotros/" aria-current="page">Nosotros</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--navy btn--sm header__cta" href="/contacto/">Solicitar evaluación<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Abrir menú"><span class="burger__lines"><span></span><span></span></span></button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav">
+  <nav aria-label="Principal móvil">
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/nosotros/">Nosotros</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/proyectos/">Proyectos</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="mnav__foot">
+    <a class="btn btn--gold" href="/contacto/">Solicitar evaluación<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+    <p><a href="mailto:contacto@cykingenieros.cl">contacto@cykingenieros.cl</a><br>WhatsApp: <a href="https://wa.me/56987512250" target="_blank" rel="noopener">+56 9 8751 2250</a></p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- 01 · HERO -->
+<section class="phero" aria-labelledby="nos-hero-title">
+  <div class="container phero__grid">
+    <div>
+      <nav class="crumbs" aria-label="Ruta de navegación" data-reveal><a href="/">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">Nosotros</span></nav>
+      <p class="eyebrow" data-reveal style="--d:60">Nosotros · C&amp;K Ingenieros</p>
+      <h1 id="nos-hero-title" data-reveal style="--d:120">Experiencia técnica. <em>Acompañamiento personalizado.</em></h1>
+      <p class="phero__lead" data-reveal style="--d:200">Combinamos experiencia, criterio técnico y una ejecución rigurosa para desarrollar soluciones eléctricas que responden a las necesidades reales de cada operación.</p>
+      <div class="phero__ctas" data-reveal style="--d:280">
+        <a class="btn btn--gold" href="#filosofia">Conoce nuestro enfoque<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a class="btn btn--light" href="/contacto/">Solicitar evaluación<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      </div>
+    </div>
+    <div class="phero__media" data-reveal style="--d:200">
+      <img src="/assets/img/nos-hero.webp" alt="Equipo técnico trabajando en una obra con instalaciones eléctricas y sanitarias" width="1400" height="933" fetchpriority="high">
+      <div class="phero__badge"><i aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3 8.3 3 3L13 4.6"/></svg></i>Empresa chilena de ingeniería eléctrica</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · QUIÉNES SOMOS -->
+<section class="section about" aria-labelledby="about-title">
+  <div class="container about__grid">
+    <div class="about__copy">
+      <p class="eyebrow" data-reveal>Ingeniería y construcción eléctrica</p>
+      <h2 class="h2" id="about-title" data-reveal style="--d:80">Comprometidos con la excelencia en cada proyecto.</h2>
+      <p class="lead" data-reveal style="--d:140">Somos una empresa chilena especializada en ingeniería y construcción eléctrica, que entrega soluciones integrales de diseño, ejecución, mantención y diagnóstico para proyectos de distinta escala y complejidad.</p>
+      <p data-reveal style="--d:180">Nuestra experiencia abarca sectores como salud, industria, retail y operaciones agrícolas y vitivinícolas, incluyendo infraestructura de media tensión, habilitaciones eléctricas e instalación de equipos de alta complejidad.</p>
+      <p data-reveal style="--d:220">Contamos con un equipo de profesionales especializados que combina conocimiento técnico, experiencia en terreno y atención directa para comprender los desafíos de cada cliente y desarrollar soluciones a medida.</p>
+      <p data-reveal style="--d:260">Trabajamos con un enfoque de calidad, innovación y cumplimiento normativo, cuidando la seguridad, la eficiencia y la continuidad operacional de cada instalación.</p>
+    </div>
+    <div data-reveal style="--d:120">
+      <div class="collage">
+        <figure class="c1"><img src="/assets/img/prj-1.webp" alt="Técnico de C&amp;K trabajando en altura en una línea de media tensión" width="460" height="610" loading="lazy"></figure>
+        <figure class="c2"><img src="/assets/img/prj-2.webp" alt="Estructuras de media tensión construidas por C&amp;K" width="460" height="610" loading="lazy"></figure>
+        <figure class="c3"><img src="/assets/img/prj-3.webp" alt="Central de climatización instalada por C&amp;K en un hospital" width="460" height="610" loading="lazy"></figure>
+      </div>
+      <div class="sectors">
+        <span>Sectores en los que trabajamos</span>
+        <ul><li>Salud</li><li>Industria</li><li>Retail</li><li>Agro y viñedos</li><li>Media tensión</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · NUESTRA FILOSOFÍA -->
+<section class="section philo" id="filosofia" aria-labelledby="philo-title">
+  <div class="container">
+    <div class="philo__grid">
+      <div class="philo__media" data-reveal><img src="/assets/img/nos-filosofia.webp" alt="Reunión de trabajo con clientes en torno a una mesa" width="1100" height="733" loading="lazy"></div>
+      <div class="philo__copy">
+        <p class="eyebrow" data-reveal>Nuestro compromiso</p>
+        <h2 class="h2" id="philo-title" data-reveal style="--d:80">Cuando el desafío exige ir más allá.</h2>
+        <p class="lead" data-reveal style="--d:140">Cuando una falla persiste o las respuestas habituales no resuelven el problema, profundizamos en el diagnóstico. Analizamos las condiciones reales de operación, contrastamos antecedentes y buscamos el origen para definir una solución adecuada a cada instalación.</p>
+        <p class="belief" data-reveal style="--d:200">Creemos que una buena ingeniería comienza por comprender el problema, fundamentar cada decisión y verificar los resultados.</p>
+      </div>
+    </div>
+    <div class="principles">
+      <p class="principles__label" data-reveal>Tres principios que guían nuestro trabajo</p>
+      <ul>
+        <li class="principle" data-reveal><span class="principle__n">01</span><h3>Excelencia y rigor técnico</h3><p>Abordamos cada proyecto con análisis fundamentado, precisión y cuidado por los detalles, desde el diagnóstico hasta la ejecución.</p></li>
+        <li class="principle" data-reveal style="--d:90"><span class="principle__n">02</span><h3>Atención directa y personalizada</h3><p>Nos involucramos en cada desafío, trabajando de manera cercana con nuestros clientes y adaptando las soluciones a sus necesidades.</p></li>
+        <li class="principle" data-reveal style="--d:180"><span class="principle__n">03</span><h3>Compromiso con la operación</h3><p>Consideramos la seguridad, la eficiencia y la continuidad de los procesos para desarrollar soluciones coherentes con las exigencias de cada instalación.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · NUESTRA FORMA DE TRABAJAR -->
+<section class="section method dark" id="metodologia" aria-labelledby="method-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Metodología de trabajo</p>
+        <h2 class="h2" id="method-title" data-reveal style="--d:80">De la evidencia a una solución verificable.</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:140">Cada proyecto requiere comprender la operación, analizar sus condiciones y actuar con fundamento. Nuestro trabajo se desarrolla en cuatro etapas:</p>
+    </div>
+    <ol class="steps" style="list-style:none;margin:0;padding:0">
+      <li class="step" data-reveal><span class="step__n">01</span><span class="step__k">Levantar</span><h3>Comprender</h3><p>Conocemos la operación, revisamos sus antecedentes e identificamos la necesidad técnica.</p></li>
+      <li class="step" data-reveal style="--d:90"><span class="step__n">02</span><span class="step__k">Analizar</span><h3>Diagnosticar</h3><p>Realizamos mediciones, contrastamos información y evaluamos las posibles causas del problema.</p></li>
+      <li class="step" data-reveal style="--d:180"><span class="step__n">03</span><span class="step__k">Resolver</span><h3>Implementar</h3><p>Definimos las intervenciones necesarias, cuidamos los detalles y supervisamos la calidad de la ejecución.</p></li>
+      <li class="step" data-reveal style="--d:270"><span class="step__n">04</span><span class="step__k">Verificar</span><h3>Documentar</h3><p>Comprobamos los resultados y entregamos antecedentes que respalden las siguientes decisiones.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 05 · NUESTRO EQUIPO — DEV: cargos pendientes de confirmación -->
+<section class="section team" id="equipo" aria-labelledby="team-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Las personas detrás de C&amp;K</p>
+        <h2 class="h2" id="team-title" data-reveal style="--d:80">Experiencia y compromiso en cada desafío.</h2>
+      </div>
+      <div class="lead" data-reveal style="--d:140"><p>Detrás de cada proyecto hay profesionales que aportan conocimiento técnico, experiencia en terreno y dedicación.</p><p style="margin-top:12px">En C&amp;K Ingenieros valoramos el trabajo colaborativo, la comunicación directa y el compromiso con cada cliente.</p></div>
+    </div>
+    <ul class="team__grid">
+      <li class="member member--lead" data-reveal style="--d:0"><div class="member__photo"><img src="/assets/img/equipo-karen-rodriguez.webp" alt="Karen Rodríguez, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Karen Rodríguez</h3><span class="member__role">Gerenta General</span></li>
+      <li class="member" data-reveal style="--d:80"><div class="member__photo"><img src="/assets/img/equipo-dani.webp" alt="Dani, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Dani</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:160"><div class="member__photo"><img src="/assets/img/equipo-naty.webp" alt="Naty, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Naty</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:240"><div class="member__photo"><img src="/assets/img/equipo-ruben.webp" alt="Rubén, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Rubén</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:0"><div class="member__photo"><img src="/assets/img/equipo-francisco.webp" alt="Francisco, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Francisco</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:80"><div class="member__photo"><img src="/assets/img/equipo-hector.webp" alt="Héctor, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Héctor</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:160"><div class="member__photo"><img src="/assets/img/equipo-marco.webp" alt="Marco, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Marco</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+      <li class="member" data-reveal style="--d:240"><div class="member__photo"><img src="/assets/img/equipo-claudio.webp" alt="Claudio, C&amp;K Ingenieros" width="560" height="700" loading="lazy"></div><h3>Claudio</h3><span class="member__role member__role--pending">Cargo por confirmar</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 06 · CONFIANZA Y CONFIDENCIALIDAD -->
+<section class="section trust" id="confidencialidad" aria-labelledby="trust-title">
+  <div class="container trust__grid">
+    <div class="trust__media" data-reveal>
+      <img src="/assets/img/nos-confidencialidad.webp" alt="Firma de documentos técnicos y comerciales" width="1100" height="733" loading="lazy">
+      <div class="trust__seal"><i aria-hidden="true"><svg viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></i>Información protegida</div>
+    </div>
+    <div class="trust__copy">
+      <p class="eyebrow" data-reveal>Compromiso profesional</p>
+      <h2 class="h2" id="trust-title" data-reveal style="--d:80">La excelencia también se demuestra en la reserva.</h2>
+      <p class="lead" data-reveal style="--d:140">Sabemos que los planos, diagnósticos, mediciones y antecedentes de infraestructura forman parte de la información estratégica de cada organización.</p>
+      <p data-reveal style="--d:180">Por eso, tratamos los antecedentes técnicos, operacionales y comerciales con discreción y responsabilidad, limitando su acceso al personal involucrado en cada proyecto.</p>
+      <p data-reveal style="--d:220">Cuando la naturaleza del servicio lo requiere, podemos formalizar acuerdos de confidencialidad y protocolos específicos para el manejo de información.</p>
+      <p class="trust__close" data-reveal style="--d:260">La confianza se construye con resultados, profesionalismo y respeto por la información de cada cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · CTA FINAL -->
+<section class="cta-wrap" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-band dark" data-reveal>
+      <img src="/assets/img/hero.webp" alt="" width="2000" height="1333" loading="lazy">
+      <p class="eyebrow">Conversemos sobre tu proyecto</p>
+      <h2 id="cta-title">Tu desafío merece la experiencia adecuada.</h2>
+      <p>Cada proyecto comienza por comprender sus necesidades. Cuéntanos qué necesitas y evaluemos cómo nuestra experiencia puede aportar a tu operación.</p>
+      <div class="cta-band__ctas">
+        <a class="btn btn--gold" href="/contacto/">Solicitar evaluación<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <a class="btn btn--light" href="/servicios/">Explorar nuestros servicios<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="/assets/img/logo-cyk-blanco.webp" alt="C&amp;K Ingenieros" width="640" height="229" loading="lazy">
+        <p class="footer__tag">Comprender tu operación. Resolver lo complejo. <span>Anticipar lo que viene.</span></p>
+        <p class="footer__legal">CYK Ingeniería y Construcción Eléctrica SpA</p>
+      </div>
+      <nav aria-label="Pie de página">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/nosotros/">Nosotros</a></li>
+          <li><a href="/servicios/">Servicios</a></li>
+          <li><a href="/proyectos/">Proyectos</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer__contact">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@cykingenieros.cl"><small>Correo</small>contacto@cykingenieros.cl</a></li>
+          <li><a href="https://wa.me/56987512250" target="_blank" rel="noopener"><small>WhatsApp</small>+56 9 8751 2250</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> C&amp;K Ingenieros. Todos los derechos reservados.</span>
+      <a href="/politica-de-privacidad/">Política de Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56987512250" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5.1 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

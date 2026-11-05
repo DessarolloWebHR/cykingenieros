@@ -1,0 +1,5 @@
+# Solo contacto.php es público; config y ejemplos no se sirven.
+<FilesMatch "^(config|config\.example)\.php$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

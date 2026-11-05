@@ -1,0 +1,197 @@
+{{HEAD}}<style>
+{{CSS}}
+</style>
+</head>
+<body>
+{{HEADER}}<main id="main">
+
+<!-- 01 · HERO -->
+<section class="hero dark" aria-labelledby="hero-title">
+  <div class="hero__bg"><img src="{{IMG:hero}}" alt="" width="2000" height="1333" fetchpriority="high"></div>
+  <div class="container">
+    <div class="hero__inner">
+      <p class="eyebrow" data-reveal>Ingeniería eléctrica especializada</p>
+      <h1 id="hero-title" data-reveal style="--d:100">Asesoría, Ingeniería y <em>Construcción.</em></h1>
+      <p class="hero__sub" data-reveal style="--d:200">Excelencia técnica en cada decisión. Rigor y precisión en cada proyecto eléctrico.</p>
+      <ul class="checks" data-reveal style="--d:300">
+        <li><i aria-hidden="true"><svg viewBox="0 0 14 14"><path d="m2.5 7.3 2.8 2.8L11.5 3.9"/></svg></i>Ingeniería para infraestructura crítica y operaciones exigentes.</li>
+        <li><i aria-hidden="true"><svg viewBox="0 0 14 14"><path d="m2.5 7.3 2.8 2.8L11.5 3.9"/></svg></i>Diagnósticos y soluciones con fundamento técnico.</li>
+        <li><i aria-hidden="true"><svg viewBox="0 0 14 14"><path d="m2.5 7.3 2.8 2.8L11.5 3.9"/></svg></i>Atención personalizada y compromiso con la continuidad operacional.</li>
+      </ul>
+      <div class="hero__ctas" data-reveal style="--d:400">
+        <a class="btn btn--gold" href="#contacto">Solicitar evaluación<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+        <a class="btn btn--light" href="#servicios">Explorar especialidades<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · CLIENTES — logos aprobados por C&K -->
+<section class="clients" aria-labelledby="clients-title">
+  <div class="container">
+    <div class="head head--center" data-reveal>
+      <p class="eyebrow">Nuestra experiencia</p>
+      <h2 id="clients-title">Empresas que han confiado en nosotros.</h2>
+    </div>
+  </div>
+  <div class="marquee client-logo-strip" data-reveal style="--d:100">
+    <div class="marquee__track">
+      <ul class="marquee__group" aria-label="Clientes">{{LOGO_SLOTS}}{{LOGO_SLOTS_REPEAT}}</ul>
+      <ul class="marquee__group" aria-hidden="true">{{LOGO_SLOTS_REPEAT}}{{LOGO_SLOTS_REPEAT}}</ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · ENFOQUE -->
+<section class="section approach" id="enfoque" aria-labelledby="approach-title">
+  <div class="container approach__grid">
+    <div class="approach__media" data-reveal>
+      <img src="{{IMG:approach}}" alt="Ingeniero revisando planos y documentación técnica" width="1200" height="800" loading="lazy">
+      <div class="approach__tag"><img src="{{LOGO}}" alt="" width="640" height="229"><p>Atención directa y soluciones a medida para cada instalación.</p></div>
+    </div>
+    <div class="approach__copy">
+      <p class="eyebrow" data-reveal>Experiencia técnica · Acompañamiento personalizado</p>
+      <h2 class="h2" id="approach-title" data-reveal style="--d:80">Cuando el desafío exige ir más allá.</h2>
+      <p class="lead" data-reveal style="--d:140">Cuando una falla persiste o las respuestas habituales no resuelven el problema, profundizamos en el diagnóstico. Analizamos las condiciones reales de operación, contrastamos antecedentes y buscamos el origen para definir una solución adecuada a cada instalación.</p>
+      <p class="more" data-reveal style="--d:200">Brindamos atención directa y soluciones a medida, combinando experiencia, criterio técnico y una ejecución rigurosa en cada proyecto.</p>
+      <p class="pillars-label" data-reveal>Nuestros pilares</p>
+      <ul class="pillars">
+        <li class="pillar" data-reveal style="--d:60"><span class="pillar__n">01</span><div><h3>Rigor técnico</h3><p>Decisiones fundamentadas en mediciones, análisis y antecedentes verificables.</p></div></li>
+        <li class="pillar" data-reveal style="--d:120"><span class="pillar__n">02</span><div><h3>Continuidad operacional</h3><p>Soluciones que consideran las necesidades y la criticidad de cada instalación.</p></div></li>
+        <li class="pillar" data-reveal style="--d:180"><span class="pillar__n">03</span><div><h3>Confianza y confidencialidad</h3><p>Atención personalizada y manejo responsable de la información técnica y comercial.</p></div></li>
+      </ul>
+      <a class="btn btn--outline" href="/nosotros/#metodologia" data-reveal>Conoce cómo trabajamos<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · SERVICIOS -->
+<section class="section services" id="servicios" aria-labelledby="services-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Nuestras áreas de especialización</p>
+        <h2 class="h2" id="services-title" data-reveal style="--d:80">Seis áreas. Un mismo estándar de excelencia.</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:140">Desde la asesoría y el diseño hasta la ejecución, la mantención y el diagnóstico especializado.</p>
+    </div>
+    <ul class="svc-grid">
+      {{SERVICES}}
+    </ul>
+    <div class="svc-extra" data-reveal>
+      <div class="svc-extra__body">
+        <span class="svc-extra__tag">Servicio complementario</span>
+        <h3>Asesoría tarifaria y transición a cliente libre</h3>
+        <p>Evaluamos consumos, facturación y condiciones de suministro para identificar oportunidades de optimización tarifaria.</p>
+        <a class="btn btn--gold" href="/servicios/#asesoria-tarifaria">Conocer este servicio<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+      </div>
+      <div class="svc-extra__media"><img src="{{IMG:svc-tarifaria}}" alt="Paneles solares sobre la cubierta de una planta" width="1100" height="744" loading="lazy"></div>
+    </div>
+    <div class="services__foot" data-reveal>
+      <a class="btn btn--navy" href="/servicios/">Explorar todos los servicios<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · INDUSTRIAS -->
+<section class="section industries dark" id="industrias" aria-labelledby="ind-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Entornos exigentes</p>
+        <h2 class="h2" id="ind-title" data-reveal style="--d:80">Donde la continuidad requiere precisión.</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:140">Abordamos las necesidades eléctricas de cada operación considerando sus equipos, procesos y condiciones de servicio.</p>
+    </div>
+    <ul class="ind-grid">
+      <li class="ind" data-reveal>
+        <img src="{{IMG:ind-salud}}" alt="Pabellón quirúrgico con equipamiento médico" width="1000" height="562" loading="lazy">
+        <div class="ind__body">
+          <span class="ind__label">01 · Salud</span>
+          <h3>Salud e infraestructura clínica</h3>
+          <p>Ingeniería y diagnóstico de instalaciones eléctricas y alimentación de equipos médicos en entornos con altas exigencias de continuidad operacional.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span><ul class="chips"><li>Equipamiento de alta complejidad</li><li>Calidad de suministro</li><li>Respaldo eléctrico</li></ul></div>
+        </div>
+      </li>
+      <li class="ind" data-reveal style="--d:100">
+        <img src="{{IMG:ind-industria}}" alt="Línea de producción industrial automatizada" width="1000" height="667" loading="lazy">
+        <div class="ind__body">
+          <span class="ind__label">02 · Industria</span>
+          <h3>Industria y operaciones industriales</h3>
+          <p>Soluciones eléctricas para máquinas, equipos y procesos productivos, desde el diagnóstico de perturbaciones hasta la ejecución y mantención.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span><ul class="chips"><li>Máquinas y procesos</li><li>Distribución eléctrica</li><li>Mantención especializada</li></ul></div>
+        </div>
+      </li>
+      <li class="ind" data-reveal style="--d:200">
+        <img src="{{IMG:ind-agro}}" alt="Viñedo al atardecer" width="1000" height="667" loading="lazy">
+        <div class="ind__body">
+          <span class="ind__label">03 · Agro y viñedos</span>
+          <h3>Agro, campos y viñedos</h3>
+          <p>Soluciones eléctricas para operaciones agrícolas y vitivinícolas, con experiencia en media tensión y diagnóstico de fallas asociadas a condiciones ambientales.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span><ul class="chips"><li>Media tensión</li><li>Aislación eléctrica</li><li>Continuidad operacional</li></ul></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 06 · PROYECTOS — DEV: reemplazar por 2–3 proyectos reales aprobados (nombre, sector, descripción, fotografía real) -->
+<section class="section projects" id="proyectos" aria-labelledby="prj-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Nuestra experiencia en terreno</p>
+        <h2 class="h2" id="prj-title" data-reveal style="--d:80">Ingeniería de alto nivel. Proyectos seleccionados.</h2>
+      </div>
+      <p class="lead" data-reveal style="--d:140">Cada proyecto presenta desafíos particulares. Nuestro trabajo combina análisis, planificación y ejecución rigurosa para desarrollar soluciones coherentes con las necesidades de cada operación.</p>
+    </div>
+    <ul class="prj-grid">
+      {{PROJECTS}}
+    </ul>
+    <div class="projects__foot" data-reveal>
+      <a class="btn btn--outline" href="/proyectos/">Conoce nuestros proyectos<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · CONTACTO -->
+<section class="section contact" id="contacto" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="head head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Evaluación de nuevos proyectos</p>
+        <h2 class="h2" id="contact-title" data-reveal style="--d:80">Tu desafío merece la experiencia adecuada.</h2>
+      </div>
+      <div class="lead" data-reveal style="--d:140"><p>En C&amp;K Ingenieros abordamos proyectos que requieren experiencia especializada, rigor técnico y una ejecución de alto estándar.</p><p style="margin-top:12px">Evaluamos cada requerimiento de manera personalizada para comprender su alcance y determinar cómo podemos aportar valor.</p></div>
+    </div>
+
+    <div class="contact__card" data-reveal>
+      <figure class="karen">
+        <img src="{{KAREN}}" alt="Karen Rodríguez, Gerenta General de C&amp;K Ingenieros" width="680" height="1020" loading="lazy">
+        <figcaption class="karen__info">
+          <div class="karen__name">Karen</div>
+          <span class="karen__role">Gerenta General</span>
+          <p>Contacto directo y atención personalizada.<strong>Conversemos sobre tu próximo desafío.</strong></p>
+        </figcaption>
+      </figure>
+      <div>
+{{FORM}}
+      </div>
+    </div>
+
+    <div class="alt" data-reveal>
+      <h3>¿Prefieres contactarnos directamente?</h3>
+      <div class="alt__links">
+        <a href="mailto:contacto@cykingenieros.cl"><i aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="m3 5.5 7 5.5 7-5.5"/></svg></i><span>contacto@cykingenieros.cl</span></a>
+        <a href="https://wa.me/56987512250" target="_blank" rel="noopener"><i aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M17 9.6a7 7 0 0 1-10.3 6.2L3 17l1.2-3.6A7 7 0 1 1 17 9.6Z"/></svg></i><span>+56 9 8751 2250</span></a>
+      </div>
+      <a class="btn btn--navy btn--sm" href="https://wa.me/56987512250?text=Hola%2C%20quisiera%20solicitar%20una%20evaluaci%C3%B3n%20t%C3%A9cnica." target="_blank" rel="noopener">Escríbenos por WhatsApp<span class="btn__ico" aria-hidden="true">{{ARROW}}</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+{{FOOTER}}<script>
+{{SCRIPT}}</script>
+</body>
+</html>
