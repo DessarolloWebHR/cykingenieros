@@ -175,9 +175,6 @@ ul{margin:0;padding:0;list-style:none}
 .marquee__group li{flex:none;display:flex;align-items:center;height:72px}
 .client-logo-strip img{height:55px;max-width:185px;width:auto;object-fit:contain;filter:brightness(0);opacity:.41;transition:opacity .3s ease}
 .client-logo-strip img:hover{opacity:.7}
-.marquee__btn{margin:24px auto 0;display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:999px}
-.marquee__btn:hover{color:var(--navy);background:var(--cloud)}
-.marquee__btn svg{width:12px;height:12px}
 
 /* ---------- 03 Approach ---------- */
 .approach__grid{display:grid;gap:48px;align-items:center}
@@ -359,7 +356,7 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
   .marquee__track{animation:none!important;width:auto}
   .marquee__group{flex-wrap:wrap;justify-content:center;padding:0 var(--gutter)}
   .marquee__group li[aria-hidden="true"]{display:none}
-  .marquee__group[aria-hidden="true"],.marquee__btn{display:none}
+  .marquee__group[aria-hidden="true"]{display:none}
 }
 </style>
 </head>
@@ -436,7 +433,6 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
       <ul class="marquee__group" aria-hidden="true">{{LOGO_SLOTS_REPEAT}}{{LOGO_SLOTS_REPEAT}}</ul>
     </div>
   </div>
-  <button class="marquee__btn" type="button" aria-pressed="false" data-marquee-toggle><svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="2.6" height="9" rx="1"/><rect x="7.4" y="1.5" width="2.6" height="9" rx="1"/></svg><span>Pausar</span></button>
 </section>
 
 <!-- 03 · ENFOQUE -->
@@ -723,12 +719,6 @@ textarea.input{min-height:140px;resize:vertical;line-height:1.55}
     items.forEach(function(el){io.observe(el);});
   }else{items.forEach(function(el){el.classList.add('is-in');});}
 
-  var mq=d.querySelector('.marquee'), mqBtn=d.querySelector('[data-marquee-toggle]');
-  mqBtn.addEventListener('click',function(){
-    var p=mq.classList.toggle('is-paused');
-    mqBtn.setAttribute('aria-pressed',String(p));
-    mqBtn.querySelector('span').textContent=p?'Reanudar':'Pausar';
-  });
 
   var form=d.getElementById('lead-form');
   var started=Date.now(), status=d.getElementById('form-status'), btn=form.querySelector('button[type="submit"]');

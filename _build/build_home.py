@@ -95,6 +95,8 @@ def logos():
     indigo = (b > r + 20) & (b > g)  # wordmark + mark strokes -> white for dark backgrounds
     white = a.copy()
     white[indigo, 0:3] = 255
+    split = int(logo.height * 0.58)  # wordmark sits below the round mark
+    white[split:, :, 0:3] = 255  # whole wordmark white, including the orange "&"
     q = lambda im: im.quantize(colors=96, method=Image.Quantize.FASTOCTREE)
     return png(q(logo)), png(q(Image.fromarray(white.astype("uint8"))))
 
