@@ -25,7 +25,8 @@ ARROW = ('<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-widt
 
 # name -> output width
 PHOTO_WIDTHS = {"hero": 2000, "approach": 1200, "svc-tarifaria": 1100, "nos-hero": 1400,
-                "nos-filosofia": 1100, "nos-confidencialidad": 1100}
+                "nos-filosofia": 1100, "nos-confidencialidad": 1100,
+                "svc-mantencion": 1000, "svc-mantencion-2": 1100}
 
 SERVICES = [
     ("asesoria-tecnica", "svc-asesoria", "Equipo técnico revisando una obra en terreno",
@@ -210,6 +211,10 @@ PAGES = [
      "Nosotros — C&amp;K Ingenieros",
      "Empresa chilena de ingeniería y construcción eléctrica. Experiencia técnica, atención personalizada "
      "y una metodología de trabajo basada en evidencia: levantar, analizar, resolver y verificar."),
+    ("servicios", "servicios/index.html", "/servicios/", "servicios", "/contacto/",
+     "Servicios — C&amp;K Ingenieros",
+     "Asesoría técnica y representación, ingeniería de diseño, construcción eléctrica, mantención "
+     "especializada, instalación de equipos de alta complejidad, diagnóstico técnico y asesoría tarifaria."),
 ]
 
 
