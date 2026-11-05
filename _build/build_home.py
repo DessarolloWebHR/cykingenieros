@@ -93,10 +93,15 @@ def logos():
     a = np.array(logo).astype(int)
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
     indigo = (b > r + 20) & (b > g)  # wordmark + mark strokes -> white for dark backgrounds
-    white = a.copy()
-    white[indigo, 0:3] = 255
+    # All-white version for dark backgrounds (the client's "Logo editable-04" is a
+    # white logo saved as JPG, so it carries no usable pixels): the round mark becomes
+    # solid white with its interlocking strokes knocked out, the wordmark turns white.
     split = int(logo.height * 0.58)  # wordmark sits below the round mark
-    white[split:, :, 0:3] = 255  # whole wordmark white, including the orange "&"
+    white = a.copy()
+    white[..., 0:3] = 255
+    knock = indigo.copy()
+    knock[split:, :] = False
+    white[knock, 3] = 0
     q = lambda im: im.quantize(colors=96, method=Image.Quantize.FASTOCTREE)
     return png(q(logo)), png(q(Image.fromarray(white.astype("uint8"))))
 
