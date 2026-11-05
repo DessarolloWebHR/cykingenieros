@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>C&amp;K Ingenieros — Asesoría, Ingeniería y Construcción Eléctrica</title>
+<meta name="description" content="Ingeniería eléctrica especializada: asesoría técnica, ingeniería de diseño, construcción eléctrica, mantención y diagnóstico para salud, industria y agro. Rigor y precisión en cada proyecto.">
+<link rel="canonical" href="https://cykingenieros.cl/">
+<meta name="theme-color" content="#081E47">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="C&amp;K Ingenieros">
+<meta property="og:title" content="C&amp;K Ingenieros — Asesoría, Ingeniería y Construcción">
+<meta property="og:description" content="Excelencia técnica en cada decisión. Rigor y precisión en cada proyecto eléctrico.">
+<meta property="og:url" content="https://cykingenieros.cl/">
+<link rel="icon" type="image/png" href="{{LOGO}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "C&K Ingenieros",
+  "legalName": "CYK Ingeniería y Construcción Eléctrica SpA",
+  "url": "https://cykingenieros.cl/",
+  "email": "contacto@cykingenieros.cl",
+  "telephone": "+56 9 8751 2250",
+  "areaServed": "CL",
+  "slogan": "Comprender tu operación. Resolver lo complejo. Anticipar lo que viene.",
+  "knowsAbout": ["Asesoría técnica eléctrica", "Ingeniería de diseño eléctrico", "Construcción eléctrica", "Mantención especializada", "Instalación de equipos de alta complejidad", "Diagnóstico técnico y termografía", "Asesoría tarifaria y cliente libre"]
+}
+</script>
+<style>
+/* =========================================================
+   C&K INGENIEROS — Design tokens
+   ========================================================= */
+:root{
+  --navy:#081E47;
+  --navy-950:#04112B;
+  --navy-900:#061838;
+  --navy-800:#0B2654;
+  --navy-700:#123266;
+  --gold:#D7B257;
+  --gold-300:#E6CB86;
+  --gold-600:#B8923A;
+  --gold-ink:#86661C;          /* gold for text on white — AA */
+  --white:#FFFFFF;
+  --paper:#F5F6F8;
+  --paper-2:#EDEFF3;
+  --ink:#0A1A36;
+  --body:#3D4A61;
+  --muted:#6A748A;
+  --line:#E1E5EC;
+  --line-strong:#CBD2DE;
+  --on-navy:#FFFFFF;
+  --on-navy-body:rgba(255,255,255,.74);
+  --on-navy-muted:rgba(255,255,255,.52);
+  --on-navy-line:rgba(255,255,255,.12);
+  --danger:#B42318;
+  --ok:#1F7A4D;
+
+  --f-display:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-body:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --container:1240px;
+  --gutter:clamp(20px,4vw,48px);
+  --section:clamp(88px,10vw,152px);
+  --radius:2px;
+  --header-h:84px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px)}
+body{margin:0;background:var(--white);color:var(--body);font-family:var(--f-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--ink);font-weight:500;letter-spacing:-.025em;line-height:1.08;margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+::selection{background:var(--gold);color:var(--navy)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:200;background:var(--gold);color:var(--navy);padding:10px 16px;font-weight:600;font-size:14px;transition:top .2s}
+.skip:focus{top:12px}
+.container{width:100%;max-width:calc(var(--container) + var(--gutter)*2);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--section);position:relative}
+
+/* =========================================================
+   Typography primitives
+   ========================================================= */
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-body);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink);line-height:1.5}
+.eyebrow::before{content:"";flex:none;width:28px;height:2px;background:var(--gold)}
+.on-navy .eyebrow{color:var(--white)}
+.h2{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-.032em}
+.h2 .soft{color:var(--muted)}
+.on-navy .h2{color:var(--white)}
+.on-navy .h2 .soft{color:var(--gold)}
+.lead{font-size:clamp(1.05rem,1.35vw,1.2rem);line-height:1.6;color:var(--body);max-width:56ch}
+.on-navy .lead{color:var(--on-navy-body)}
+.mono{font-family:var(--f-mono);font-weight:500;letter-spacing:.02em}
+
+.section-head{display:grid;gap:22px;margin-bottom:clamp(48px,6vw,80px)}
+.section-head--split{grid-template-columns:1fr}
+@media (min-width:960px){
+  .section-head--split{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:end;column-gap:64px}
+  .section-head--split .lead{justify-self:end}
+}
+
+/* =========================================================
+   Buttons & links
+   ========================================================= */
+.btn{--bg:var(--gold);--fg:var(--navy);--bd:var(--gold);position:relative;display:inline-flex;align-items:center;justify-content:space-between;gap:28px;min-height:58px;padding:0 22px 0 26px;background:var(--bg);color:var(--fg);border:1px solid var(--bd);border-radius:var(--radius);font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:.005em;cursor:pointer;overflow:hidden;isolation:isolate;transition:color .35s var(--ease),border-color .35s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--fill,var(--gold-300));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.btn:hover::before{transform:scaleX(1)}
+.btn .ico{width:18px;height:18px;flex:none;transition:transform .35s var(--ease-out)}
+.btn:hover .ico{transform:translate(3px,-3px)}
+.btn--arrow:hover .ico{transform:translateX(4px)}
+.btn--ghost{--bg:transparent;--fg:var(--white);--bd:rgba(255,255,255,.34);--fill:rgba(255,255,255,.08)}
+.btn--ghost:hover{border-color:rgba(255,255,255,.7)}
+.btn--navy{--bg:var(--navy);--fg:var(--white);--bd:var(--navy);--fill:var(--navy-700)}
+.btn--outline{--bg:transparent;--fg:var(--navy);--bd:var(--line-strong);--fill:var(--paper)}
+.btn--outline:hover{border-color:var(--navy)}
+.btn--sm{min-height:46px;padding:0 16px 0 20px;gap:16px;font-size:14px}
+
+.link{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:14.5px;color:var(--navy);padding-bottom:6px;background:linear-gradient(var(--gold),var(--gold)) left bottom/34px 2px no-repeat;transition:background-size .5s var(--ease-out),gap .35s var(--ease-out)}
+.link svg{width:16px;height:16px;transition:transform .35s var(--ease-out)}
+.link:hover{background-size:100% 2px}
+.link:hover svg{transform:translateX(4px)}
+.on-navy .link{color:var(--white)}
+
+/* =========================================================
+   Header
+   ========================================================= */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.header.is-scrolled{border-bottom-color:var(--line);box-shadow:0 8px 30px -18px rgba(8,30,71,.25)}
+.header__bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--header-h);transition:height .3s var(--ease)}
+.header.is-scrolled .header__bar{height:72px}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:54px;width:auto;transition:height .3s var(--ease)}
+.header.is-scrolled .brand img{height:46px}
+.nav{display:none}
+.nav ul{display:flex;gap:4px}
+.nav a{position:relative;display:block;padding:10px 16px;font-size:15px;font-weight:500;color:var(--ink);transition:color .25s}
+.nav a::after{content:"";position:absolute;left:16px;right:16px;bottom:4px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out)}
+.nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
+.header__cta{display:none}
+.burger{display:inline-flex;align-items:center;gap:12px;height:46px;padding:0 4px 0 14px;border:1px solid var(--line-strong);background:transparent;border-radius:var(--radius);cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.burger__lines{position:relative;width:38px;height:38px}
+.burger__lines span{position:absolute;left:10px;right:10px;height:1.5px;background:var(--navy);transition:transform .35s var(--ease-out),opacity .2s}
+.burger__lines span:nth-child(1){top:14px}
+.burger__lines span:nth-child(2){top:22px}
+.burger[aria-expanded="true"] .burger__lines span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] .burger__lines span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+@media (min-width:1060px){
+  .nav{display:block}
+  .header__cta{display:inline-flex}
+  .burger{display:none}
+}
+.mnav{position:fixed;inset:var(--header-h) 0 0 0;z-index:99;background:var(--navy);color:var(--white);display:flex;flex-direction:column;justify-content:space-between;padding:32px var(--gutter) calc(32px + env(safe-area-inset-bottom));visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s;overflow-y:auto}
+.mnav.is-open{visibility:visible;opacity:1;transform:none;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.mnav ol{list-style:none;margin:0;padding:0;counter-reset:m}
+.mnav li{border-bottom:1px solid var(--on-navy-line)}
+.mnav ol a{display:flex;align-items:baseline;gap:18px;padding:18px 0;font-family:var(--f-display);font-size:clamp(1.8rem,7vw,2.4rem);letter-spacing:-.03em;font-weight:500}
+.mnav ol a::before{counter-increment:m;content:counter(m,decimal-leading-zero);font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:.04em}
+.mnav__foot{display:grid;gap:18px;padding-top:32px}
+.mnav__foot .btn{width:100%}
+.mnav__foot p{font-size:14px;color:var(--on-navy-muted)}
+.mnav__foot a.plain{color:var(--white)}
+@media (min-width:1060px){.mnav{display:none}}
+
+/* =========================================================
+   01 · Hero
+   ========================================================= */
+.hero{position:relative;background:var(--navy);color:var(--white);overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(1200px 600px at 85% 10%,rgba(215,178,87,.10),transparent 60%),
+  radial-gradient(900px 700px at 0% 100%,rgba(18,50,102,.9),transparent 70%)}
+.hero__grid-bg{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:
+  linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 55%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 55%,#000 100%)}
+.hero__inner{display:grid;gap:56px;padding-block:clamp(64px,9vw,128px) clamp(56px,7vw,96px);align-items:center}
+@media (min-width:1060px){.hero__inner{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px;min-height:min(calc(100svh - var(--header-h) - 92px),780px)}}
+.hero h1{color:var(--white);font-size:clamp(2.7rem,5.4vw,5rem);line-height:.98;letter-spacing:-.045em;font-weight:500;margin-top:30px}
+.hero h1 .gold{color:var(--gold)}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .line > span{display:inline-block}
+.hero__sub{margin-top:30px;font-family:var(--f-display);font-size:clamp(1.2rem,1.8vw,1.5rem);line-height:1.45;letter-spacing:-.01em;color:var(--gold-300);max-width:30ch}
+.checks{display:grid;gap:16px;margin-top:38px;max-width:52ch}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;font-size:16.5px;line-height:1.55;color:var(--on-navy-body)}
+.checks svg{width:28px;height:28px;margin-top:-2px}
+.checks .ring{fill:none;stroke:rgba(215,178,87,.55);stroke-width:1.25}
+.checks .tick{fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:46px}
+.hero__ctas .btn{min-width:min(100%,260px)}
+@media (max-width:520px){.hero__ctas .btn{width:100%}}
+
+/* Hero schematic visual */
+.schematic{position:relative;width:100%;max-width:560px;justify-self:center;aspect-ratio:560/620}
+.schematic__frame{position:absolute;inset:0;border:1px solid var(--on-navy-line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0))}
+.schematic__frame::before,.schematic__frame::after{content:"";position:absolute;width:14px;height:14px;border-color:var(--gold);border-style:solid}
+.schematic__frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.schematic__frame::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.schematic svg{position:absolute;inset:0;width:100%;height:100%}
+.sx-grid{stroke:rgba(255,255,255,.05);stroke-width:1}
+.sx-wire{fill:none;stroke:rgba(255,255,255,.62);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.sx-wire--gold{stroke:var(--gold);stroke-width:1.8}
+.sx-sym{fill:none;stroke:rgba(255,255,255,.8);stroke-width:1.4}
+.sx-sym--gold{stroke:var(--gold)}
+.sx-node{fill:var(--gold)}
+.sx-label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:rgba(255,255,255,.55)}
+.sx-label--gold{fill:var(--gold)}
+.sx-title{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;fill:rgba(255,255,255,.45)}
+.draw{stroke-dasharray:1;stroke-dashoffset:0}
+.js .draw{stroke-dashoffset:1}
+.js .is-drawn .draw{animation:draw 1.8s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 1ms + 300ms)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.js .sx-fade{opacity:0}
+.js .is-drawn .sx-fade{animation:fade .8s var(--ease) forwards;animation-delay:calc(var(--d,0) * 1ms + 300ms)}
+@keyframes fade{to{opacity:1}}
+.readout{position:absolute;right:-5%;bottom:-6%;width:min(260px,58%);background:var(--white);color:var(--ink);padding:18px 20px 16px;border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.readout__k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.readout__k i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(31,122,77,.14)}
+.readout__t{font-family:var(--f-display);font-weight:500;font-size:17px;line-height:1.3;letter-spacing:-.01em;margin-top:10px}
+.readout svg{position:static;height:38px;margin-top:12px}
+.readout .wave{fill:none;stroke:var(--navy);stroke-width:1.5}
+.readout .wave2{fill:none;stroke:var(--gold-600);stroke-width:1.5;opacity:.85}
+@media (max-width:1059px){.schematic{max-width:520px}.readout{right:-2%}}
+@media (max-width:560px){.readout{display:none}}
+
+.hero__rail{border-top:1px solid var(--on-navy-line)}
+.hero__rail ul{display:grid;grid-template-columns:1fr;gap:0}
+.hero__rail li{padding:20px 0;font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--on-navy-muted);display:flex;gap:14px;align-items:center}
+.hero__rail li + li{border-top:1px solid var(--on-navy-line)}
+.hero__rail .mono{color:var(--gold);letter-spacing:.06em;font-size:11px}
+@media (min-width:860px){
+  .hero__rail ul{grid-template-columns:repeat(3,1fr)}
+  .hero__rail li{padding:26px 0}
+  .hero__rail li + li{border-top:0;border-left:1px solid var(--on-navy-line);padding-left:32px}
+}
+
+/* =========================================================
+   02 · Clients marquee
+   ========================================================= */
+.clients{background:var(--paper);padding-block:clamp(56px,6vw,84px);border-bottom:1px solid var(--line)}
+.clients__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 40px;margin-bottom:40px}
+.clients__head h2{font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.025em}
+.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee__track{display:flex;width:max-content;animation:marquee 48s linear infinite}
+.marquee:hover .marquee__track,.marquee:focus-within .marquee__track,.marquee.is-paused .marquee__track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee__group{display:flex;align-items:center;gap:clamp(40px,5vw,72px);padding-right:clamp(40px,5vw,72px)}
+.logo-slot{flex:none;display:flex;align-items:center;gap:12px;height:64px;width:188px;padding:0 18px;border:1px dashed #C4CAD4;color:#9AA2B1;filter:grayscale(1);opacity:.9;transition:opacity .3s,color .3s,border-color .3s}
+.logo-slot:hover{opacity:1;color:#6A748A;border-color:#9AA2B1}
+.logo-slot svg{width:30px;height:30px;flex:none}
+.logo-slot b{display:block;font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:-.01em;line-height:1.1}
+.logo-slot small{display:block;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.marquee__btn{display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:6px 0;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.marquee__btn:hover{color:var(--navy)}
+.marquee__btn svg{width:14px;height:14px}
+
+/* =========================================================
+   03 · Enfoque
+   ========================================================= */
+.approach__grid{display:grid;gap:64px}
+@media (min-width:1000px){.approach__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:start}}
+.approach__copy .h2{margin-top:24px}
+.approach__copy p{margin-top:24px;max-width:56ch}
+.approach__copy p.lead{margin-top:32px;color:var(--ink)}
+.approach__copy .link{margin-top:40px}
+.approach__aside{position:relative}
+@media (min-width:1000px){.approach__aside{position:sticky;top:calc(var(--header-h) + 40px)}}
+.pillars__label{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--ink)}
+.pillars__label span{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.pillars__label .mono{font-size:11px;color:var(--muted)}
+.pillar{display:grid;grid-template-columns:64px 1fr;gap:8px 20px;padding:34px 0;border-bottom:1px solid var(--line);position:relative}
+.pillar::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-out)}
+.pillar:hover::after{transform:scaleX(1)}
+.pillar__n{font-family:var(--f-mono);font-size:13px;color:var(--gold-ink);padding-top:6px}
+.pillar h3{font-size:clamp(1.35rem,2vw,1.65rem);letter-spacing:-.022em}
+@media (max-width:600px){.pillar{grid-template-columns:40px 1fr}}
+.pillar p{grid-column:2;font-size:16px;color:var(--body);max-width:44ch}
+.quote-card{margin-top:40px;background:var(--navy);color:var(--white);padding:30px 32px;position:relative;overflow:hidden}
+.quote-card::before{content:"";position:absolute;top:0;left:0;width:56px;height:2px;background:var(--gold)}
+.quote-card p{font-family:var(--f-display);font-size:clamp(1.15rem,1.6vw,1.35rem);line-height:1.45;letter-spacing:-.012em}
+.quote-card p span{color:var(--gold)}
+
+/* =========================================================
+   04 · Servicios
+   ========================================================= */
+.services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line-strong);border-left:1px solid var(--line-strong)}
+@media (min-width:700px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1060px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+.svc{position:relative;display:flex;flex-direction:column;min-height:400px;padding:36px 34px 34px;background:var(--white);border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);isolation:isolate;overflow:hidden;transition:color .45s var(--ease)}
+.svc::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--navy);transform:translateY(101%);transition:transform .6s var(--ease-out)}
+.svc:hover::before,.svc:focus-within::before{transform:none}
+.svc__top{display:flex;justify-content:space-between;align-items:flex-start}
+.svc__n{font-family:var(--f-mono);font-size:13px;color:var(--gold-ink);transition:color .45s}
+.svc__ico{width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line);transition:border-color .45s,background .45s}
+.svc__ico svg{width:26px;height:26px;fill:none;stroke:var(--navy);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke .45s}
+@media (max-width:699px){.svc{min-height:0;padding:30px 24px}}
+.svc h3{padding-top:clamp(36px,5vw,64px);font-size:clamp(1.4rem,1.9vw,1.62rem);line-height:1.15;letter-spacing:-.022em;transition:color .45s;max-width:16ch}
+.svc p{margin:16px 0 28px;font-size:15.5px;line-height:1.6;color:var(--body);transition:color .45s}
+.svc .link{margin-top:auto;align-self:flex-start;transition:color .45s,background-size .5s var(--ease-out)}
+.svc .link::after{content:"";position:absolute;inset:0}
+.svc:hover h3,.svc:focus-within h3{color:var(--white)}
+.svc:hover p,.svc:focus-within p{color:var(--on-navy-body)}
+.svc:hover .svc__n,.svc:focus-within .svc__n{color:var(--gold)}
+.svc:hover .svc__ico,.svc:focus-within .svc__ico{border-color:rgba(215,178,87,.5);background:rgba(215,178,87,.06)}
+.svc:hover .svc__ico svg,.svc:focus-within .svc__ico svg{stroke:var(--gold)}
+.svc:hover .link,.svc:focus-within .link{color:var(--white);background-size:100% 2px}
+
+.svc-extra{margin-top:32px;display:grid;gap:28px;align-items:center;padding:34px;background:var(--white);border:1px solid var(--line-strong);position:relative}
+.svc-extra::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px;background:var(--gold)}
+@media (min-width:900px){.svc-extra{grid-template-columns:auto minmax(0,1fr) auto;gap:40px;padding:34px 40px}}
+.svc-extra__tag{display:flex;align-items:center;gap:16px}
+.svc-extra__tag .svc__ico{border-color:rgba(215,178,87,.55)}
+.svc-extra__tag .svc__ico svg{stroke:var(--gold-ink)}
+.svc-extra__tag span{font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);max-width:14ch;line-height:1.4}
+.svc-extra h3{font-size:clamp(1.3rem,1.8vw,1.5rem);letter-spacing:-.02em}
+.svc-extra p{margin-top:8px;font-size:15.5px;max-width:62ch}
+.services__foot{margin-top:56px;display:flex;justify-content:center}
+
+/* =========================================================
+   05 · Industrias
+   ========================================================= */
+.industries{background:var(--navy);color:var(--white);overflow:hidden}
+.industries .lead{max-width:48ch}
+.ind-grid{display:grid;gap:20px}
+@media (min-width:980px){.ind-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+.ind{position:relative;display:flex;flex-direction:column;background:var(--navy-900);border:1px solid var(--on-navy-line);transition:border-color .45s var(--ease),transform .6s var(--ease-out)}
+.ind:hover{border-color:rgba(215,178,87,.5);transform:translateY(-4px)}
+.ind__art{position:relative;height:200px;border-bottom:1px solid var(--on-navy-line);overflow:hidden;background:
+  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(180deg,var(--navy-800),var(--navy-900))}
+.ind__art svg{position:absolute;inset:0;width:100%;height:100%}
+.ind__art .tr{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ind__art .tr2{fill:none;stroke:rgba(255,255,255,.45);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.ind__art .tr3{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1.2}
+.ind__art .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;fill:rgba(255,255,255,.45)}
+.ind__big{position:absolute;right:18px;top:12px;font-family:var(--f-display);font-weight:500;font-size:84px;line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14)}
+.ind__body{display:flex;flex-direction:column;flex:1;padding:32px 30px 30px}
+.ind__n{font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:.06em}
+.ind h3{color:var(--white);font-size:clamp(1.5rem,2.1vw,1.85rem);letter-spacing:-.025em;margin-top:14px;line-height:1.12}
+.ind p{margin-top:16px;font-size:15.5px;color:var(--on-navy-body);line-height:1.62}
+.ind__areas{margin-top:auto;padding-top:28px}
+.ind__areas > span{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--on-navy-muted);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:13px;line-height:1;padding:9px 12px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.86);border-radius:var(--radius)}
+
+/* =========================================================
+   06 · Proyectos
+   ========================================================= */
+.prj-grid{display:grid;gap:28px}
+@media (min-width:760px){.prj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1060px){.prj-grid{grid-template-columns:repeat(3,1fr);gap:28px}}
+.prj{display:flex;flex-direction:column;position:relative}
+.prj__media{position:relative;aspect-ratio:4/3.1;overflow:hidden;background:var(--navy-800)}
+.prj__ph{position:absolute;inset:0;transition:transform 1s var(--ease-out);background:
+  linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/22px 22px,
+  linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/22px 22px,
+  radial-gradient(120% 90% at 80% 0%,var(--navy-700),var(--navy-900))}
+.prj__ph svg{position:absolute;inset:14% 12%;width:76%;height:72%;fill:none;stroke:rgba(255,255,255,.28);stroke-width:1.1}
+.prj__ph .g{stroke:rgba(215,178,87,.75)}
+.prj:hover .prj__ph{transform:scale(1.04)}
+.prj__badge{position:absolute;left:16px;top:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,.92);color:var(--navy);font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.prj__badge::before{content:"";width:6px;height:6px;background:var(--gold-600);border-radius:50%}
+.prj__cap{position:absolute;right:16px;bottom:14px;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.5);text-transform:uppercase}
+.prj__body{padding-top:24px;display:flex;flex-direction:column}
+.prj__meta{display:flex;gap:12px;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
+.prj__meta .mono{color:var(--muted);letter-spacing:.04em;font-weight:500}
+.prj h3{margin-top:12px;font-size:clamp(1.3rem,1.8vw,1.55rem);letter-spacing:-.022em;line-height:1.18}
+.prj p{margin-top:12px;font-size:15.5px;color:var(--body);max-width:46ch}
+.prj .link{margin-top:22px;align-self:flex-start}
+.prj .link::after{content:"";position:absolute;inset:0}
+.projects__foot{margin-top:64px;padding-top:36px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.projects__foot p{font-size:14px;color:var(--muted);max-width:60ch}
+
+/* =========================================================
+   07 · Contacto
+   ========================================================= */
+.contact{background:var(--paper)}
+.contact__intro{display:grid;gap:24px;margin-bottom:clamp(48px,6vw,72px)}
+@media (min-width:960px){.contact__intro{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);column-gap:64px;align-items:end}}
+.contact__intro .copy{display:grid;gap:16px;max-width:54ch}
+.contact__intro .copy p:first-child{color:var(--ink)}
+.contact__card{display:grid;background:var(--white);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(8,30,71,.35)}
+@media (min-width:960px){.contact__card{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.karen{position:relative;min-height:440px;overflow:hidden;background:#3a3f48}
+.karen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(1.02);transition:transform 1.4s var(--ease-out)}
+.contact__card:hover .karen img{transform:scale(1.05)}
+.karen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,30,71,0) 40%,rgba(8,30,71,.55) 66%,rgba(8,30,71,.96) 100%)}
+.karen__info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:32px;color:var(--white)}
+.karen__info .name{font-family:var(--f-display);font-size:30px;font-weight:500;letter-spacing:-.03em;line-height:1}
+.karen__info .role{margin-top:8px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.karen__info .rule{width:40px;height:2px;background:var(--gold);margin:22px 0 18px}
+.karen__info p{font-size:15px;color:rgba(255,255,255,.82);line-height:1.55}
+.karen__info p strong{display:block;color:var(--white);font-family:var(--f-display);font-weight:500;font-size:19px;letter-spacing:-.015em;margin-top:4px}
+@media (min-width:960px){.karen{min-height:100%}}
+@media (max-width:959px){.karen{min-height:0;background:var(--navy)}.karen img{position:relative;aspect-ratio:1/1;height:auto;object-position:50% 12%;transform:none}.karen::after{inset:auto 0 0 0;height:0}.karen__info{position:relative;padding:28px 24px 30px}.karen__info .rule{margin:18px 0 14px}}
+
+.form-wrap{padding:clamp(28px,4vw,56px)}
+.form-wrap h3{font-size:clamp(1.45rem,2vw,1.75rem);letter-spacing:-.022em}
+.form-wrap .sub{margin-top:8px;font-size:15px;color:var(--muted)}
+.form{margin-top:32px;display:grid;gap:22px}
+.form__row{display:grid;gap:22px}
+@media (min-width:640px){.form__row{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:8px;position:relative}
+.field label{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:.005em}
+.field label .req{color:var(--gold-ink);margin-left:2px}
+.input{width:100%;min-height:54px;padding:14px 16px;background:var(--paper);border:1px solid transparent;border-bottom-color:var(--line-strong);border-radius:var(--radius);font-size:16px;color:var(--ink);transition:border-color .25s,background .25s,box-shadow .25s;-webkit-appearance:none;appearance:none}
+.input::placeholder{color:#8B93A5}
+.input:hover{border-bottom-color:var(--muted)}
+.input:focus{outline:none;background:var(--white);border-color:var(--navy);box-shadow:0 0 0 3px rgba(215,178,87,.35)}
+textarea.input{min-height:136px;resize:vertical;line-height:1.55}
+.select{position:relative}
+.select select{padding-right:48px;cursor:pointer}
+.select select:invalid{color:#8B93A5}
+.select option{color:var(--ink)}
+.select svg{position:absolute;right:16px;top:50%;width:16px;height:16px;transform:translateY(-50%);pointer-events:none;stroke:var(--navy);fill:none;stroke-width:1.6}
+.field.has-error .input{border-color:var(--danger);background:#FFF7F6}
+.field .err{display:none;font-size:13px;color:var(--danger);font-weight:500}
+.field.has-error .err{display:flex;gap:6px;align-items:center}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.privacy{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:13.5px;line-height:1.55;color:var(--muted);padding:16px 18px;background:var(--paper);border-left:2px solid var(--gold)}
+.privacy svg{width:18px;height:18px;margin-top:1px;stroke:var(--gold-ink);fill:none;stroke-width:1.5}
+.privacy a{color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold)}
+.form__actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.form__actions .btn{min-width:240px}
+@media (max-width:520px){.form__actions .btn{width:100%}}
+.form__status{font-size:14px;font-weight:500}
+.form__status.is-error{color:var(--danger)}
+.btn[aria-busy="true"]{pointer-events:none;opacity:.85}
+.btn .spin{display:none;width:18px;height:18px;border:2px solid rgba(8,30,71,.25);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
+.btn[aria-busy="true"] .spin{display:block}
+.btn[aria-busy="true"] .ico{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.success{display:none;padding:clamp(28px,4vw,56px);min-height:100%;flex-direction:column;justify-content:center}
+.success.is-visible{display:flex;animation:fade .6s var(--ease) both}
+.success__ico{width:64px;height:64px;border:1px solid var(--gold);display:grid;place-items:center}
+.success__ico svg{width:30px;height:30px;stroke:var(--gold-ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.success h3{margin-top:28px;font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:-.03em}
+.success p{margin-top:14px;max-width:46ch}
+.success .link{margin-top:32px;align-self:flex-start}
+
+.alt{margin-top:28px;display:grid;gap:20px;padding:28px 0 0;border-top:1px solid var(--line-strong)}
+@media (min-width:900px){.alt{grid-template-columns:auto 1fr auto;align-items:center;gap:40px}}
+.alt h3{font-size:19px;letter-spacing:-.015em}
+.alt__links{display:flex;flex-wrap:wrap;gap:12px 36px}
+.alt__links a{display:inline-flex;align-items:center;gap:12px;font-size:15.5px;color:var(--ink);font-weight:500}
+.alt__links a span.k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.alt__links a:hover .v{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.alt__links svg{width:18px;height:18px;stroke:var(--gold-ink);fill:none;stroke-width:1.5}
+.btn--wa{--bg:var(--navy);--fg:var(--white);--bd:var(--navy);--fill:var(--navy-700)}
+
+/* =========================================================
+   08 · Footer
+   ========================================================= */
+.footer{background:var(--navy-950);color:var(--on-navy-body);padding-top:clamp(72px,8vw,112px);position:relative;overflow:hidden}
+.footer__top{display:grid;gap:48px;padding-bottom:64px}
+@media (min-width:900px){.footer__top{grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) minmax(0,1fr);gap:64px}}
+.footer__brand img{height:72px;width:auto}
+.footer__legal{margin-top:24px;font-size:13px;letter-spacing:.04em;color:var(--on-navy-muted)}
+.footer__tag{margin-top:20px;font-family:var(--f-display);font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.35;letter-spacing:-.02em;color:var(--white);max-width:24ch}
+.footer__tag span{color:var(--gold)}
+.footer h4{font-family:var(--f-body);font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.footer ul{display:grid;gap:12px}
+.footer ul a{font-size:15.5px;color:var(--on-navy-body);transition:color .25s;display:inline-flex;gap:10px;align-items:center}
+.footer ul a:hover{color:var(--white)}
+.footer ul a .mono{font-size:10.5px;color:var(--on-navy-muted)}
+.footer__contact a{color:var(--white)!important}
+.footer__contact small{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-navy-muted);margin-bottom:4px}
+.footer__bottom{border-top:1px solid var(--on-navy-line);padding-block:26px calc(26px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;font-size:13px;color:var(--on-navy-muted)}
+.footer__bottom a:hover{color:var(--white)}
+.footer__mark{position:absolute;right:-4vw;bottom:-6vw;font-family:var(--f-display);font-weight:600;font-size:clamp(160px,26vw,380px);line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.05);pointer-events:none;user-select:none}
+
+/* Floating WhatsApp */
+.wa-float{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:90;width:56px;height:56px;border-radius:50%;background:var(--navy);display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(8,30,71,.55);border:1px solid rgba(215,178,87,.55);transform:translateY(120px);transition:transform .5s var(--ease-out),background .3s}
+.wa-float.is-visible{transform:none}
+.wa-float:hover{background:var(--navy-700)}
+.wa-float svg{width:24px;height:24px;fill:var(--gold)}
+
+/* =========================================================
+   Reveal motion
+   ========================================================= */
+.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform 1.1s var(--ease-out);transition-delay:calc(var(--d,0) * 1ms)}
+.js [data-reveal].is-in{opacity:1;transform:none}
+.js .hero h1 .line > span{transform:translateY(105%);transition:transform 1.1s var(--ease-out);transition-delay:calc(var(--d,0) * 1ms)}
+.js .hero.is-ready h1 .line > span{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0ms!important}
+  .js [data-reveal]{opacity:1;transform:none}
+  .js .hero h1 .line > span{transform:none}
+  .js .draw{stroke-dashoffset:0}
+  .js .sx-fade{opacity:1}
+  .marquee{-webkit-mask-image:none;mask-image:none}
+  .marquee__track{animation:none!important;width:auto}
+  .marquee__group{flex-wrap:wrap;justify-content:center;gap:20px;padding:0}
+  .marquee__group[aria-hidden="true"],.marquee__btn{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="container header__bar">
+    <a class="brand" href="/" aria-label="C&amp;K Ingenieros — Inicio">
+      <img src="{{LOGO}}" alt="C&amp;K Ingenieros" width="640" height="229">
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="/" aria-current="page">Inicio</a></li>
+        <li><a href="/nosotros/">Nosotros</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--sm header__cta" href="#contacto">Solicitar evaluación
+      <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mnav">
+      <span>Menú</span><span class="burger__lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-label="Menú móvil">
+  <nav aria-label="Principal móvil">
+    <ol>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/nosotros/">Nosotros</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/proyectos/">Proyectos</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ol>
+  </nav>
+  <div class="mnav__foot">
+    <a class="btn" href="#contacto" data-close>Solicitar evaluación
+      <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+    </a>
+    <p><a class="plain" href="mailto:contacto@cykingenieros.cl">contacto@cykingenieros.cl</a><br>WhatsApp: <a class="plain" href="https://wa.me/56987512250" target="_blank" rel="noopener">+56 9 8751 2250</a></p>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ 01 · HERO ============ -->
+<section class="hero on-navy" aria-labelledby="hero-title">
+  <div class="hero__grid-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero__inner">
+      <div>
+        <p class="eyebrow" data-reveal style="--d:80">Ingeniería eléctrica especializada</p>
+        <h1 id="hero-title">
+          <span class="line"><span style="--d:160">Asesoría, Ingeniería</span></span>
+          <span class="line"><span style="--d:260">y <span class="gold">Construcción.</span></span></span>
+        </h1>
+        <p class="hero__sub" data-reveal style="--d:480">Excelencia técnica en cada decisión. Rigor y precisión en cada proyecto eléctrico.</p>
+        <ul class="checks" aria-label="Lo que nos distingue">
+          <li data-reveal style="--d:600"><svg viewBox="0 0 28 28" aria-hidden="true"><circle class="ring" cx="14" cy="14" r="12.5"/><path class="tick" d="m9 14.4 3.3 3.3L19.2 10.6"/></svg><span>Ingeniería para infraestructura crítica y operaciones exigentes.</span></li>
+          <li data-reveal style="--d:690"><svg viewBox="0 0 28 28" aria-hidden="true"><circle class="ring" cx="14" cy="14" r="12.5"/><path class="tick" d="m9 14.4 3.3 3.3L19.2 10.6"/></svg><span>Diagnósticos y soluciones con fundamento técnico.</span></li>
+          <li data-reveal style="--d:780"><svg viewBox="0 0 28 28" aria-hidden="true"><circle class="ring" cx="14" cy="14" r="12.5"/><path class="tick" d="m9 14.4 3.3 3.3L19.2 10.6"/></svg><span>Atención personalizada y compromiso con la continuidad operacional.</span></li>
+        </ul>
+        <div class="hero__ctas" data-reveal style="--d:900">
+          <a class="btn" href="#contacto">Solicitar evaluación
+            <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--arrow" href="#servicios">Explorar especialidades
+            <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h14m-5-5 5 5-5 5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Technical schematic (decorative) -->
+      <div class="schematic" data-reveal data-draw style="--d:300" aria-hidden="true">
+        <div class="schematic__frame"></div>
+        <svg viewBox="0 0 560 620" preserveAspectRatio="xMidYMid meet">
+          <g>
+            <path class="sx-grid" d="M0 80H560M0 540H560M40 0V620M520 0V620"/>
+          </g>
+          <text class="sx-title sx-fade" x="40" y="58" style="--d:0">DIAGRAMA UNILINEAL · REFERENCIAL</text>
+          <text class="sx-title sx-fade" x="520" y="58" text-anchor="end" style="--d:0">C&amp;K / 01</text>
+
+          <!-- Incoming MT line -->
+          <path class="sx-wire draw" pathLength="1" style="--d:0" d="M280 80V128"/>
+          <text class="sx-label sx-fade" x="292" y="106" style="--d:200">ACOMETIDA MT</text>
+          <!-- Breaker -->
+          <rect class="sx-sym draw" pathLength="1" style="--d:250" x="268" y="128" width="24" height="24"/>
+          <path class="sx-sym draw" pathLength="1" style="--d:300" d="m272 132 16 16"/>
+          <path class="sx-wire draw" pathLength="1" style="--d:350" d="M280 152V178"/>
+          <!-- Transformer -->
+          <circle class="sx-sym draw" pathLength="1" style="--d:420" cx="280" cy="198" r="20"/>
+          <circle class="sx-sym sx-sym--gold draw" pathLength="1" style="--d:520" cx="280" cy="226" r="20"/>
+          <text class="sx-label sx-fade" x="314" y="204" style="--d:600">TRANSFORMADOR</text>
+          <text class="sx-label sx-label--gold sx-fade" x="314" y="222" style="--d:650">MT / BT</text>
+          <path class="sx-wire draw" pathLength="1" style="--d:620" d="M280 246V292"/>
+          <!-- Main busbar -->
+          <path class="sx-wire sx-wire--gold draw" pathLength="1" style="--d:760" d="M96 292H464"/>
+          <text class="sx-label sx-fade" x="96" y="282" style="--d:900">TABLERO GENERAL</text>
+          <circle class="sx-node sx-fade" cx="280" cy="292" r="3.5" style="--d:800"/>
+          <!-- Backup source -->
+          <path class="sx-wire draw" pathLength="1" style="--d:700" d="M464 292V236"/>
+          <circle class="sx-sym draw" pathLength="1" style="--d:760" cx="464" cy="214" r="22"/>
+          <path class="sx-sym draw" pathLength="1" style="--d:820" d="M452 214c4-8 8-8 12 0s8 8 12 0"/>
+          <text class="sx-label sx-fade" x="464" y="172" text-anchor="middle" style="--d:880">RESPALDO</text>
+          <circle class="sx-node sx-fade" cx="464" cy="292" r="3.5" style="--d:800"/>
+
+          <!-- Feeders -->
+          <g>
+            <path class="sx-wire draw" pathLength="1" style="--d:950" d="M128 292V352"/>
+            <rect class="sx-sym draw" pathLength="1" style="--d:1000" x="118" y="352" width="20" height="20"/>
+            <path class="sx-wire draw" pathLength="1" style="--d:1050" d="M128 372V430"/>
+            <circle class="sx-node sx-fade" cx="128" cy="292" r="3" style="--d:950"/>
+
+            <path class="sx-wire draw" pathLength="1" style="--d:1020" d="M232 292V352"/>
+            <rect class="sx-sym draw" pathLength="1" style="--d:1070" x="222" y="352" width="20" height="20"/>
+            <path class="sx-wire draw" pathLength="1" style="--d:1120" d="M232 372V430"/>
+            <circle class="sx-node sx-fade" cx="232" cy="292" r="3" style="--d:1020"/>
+
+            <path class="sx-wire draw" pathLength="1" style="--d:1090" d="M336 292V352"/>
+            <rect class="sx-sym sx-sym--gold draw" pathLength="1" style="--d:1140" x="326" y="352" width="20" height="20"/>
+            <path class="sx-wire sx-wire--gold draw" pathLength="1" style="--d:1190" d="M336 372V430"/>
+            <circle class="sx-node sx-fade" cx="336" cy="292" r="3" style="--d:1090"/>
+
+            <path class="sx-wire draw" pathLength="1" style="--d:1160" d="M432 292V352"/>
+            <rect class="sx-sym draw" pathLength="1" style="--d:1210" x="422" y="352" width="20" height="20"/>
+            <path class="sx-wire draw" pathLength="1" style="--d:1260" d="M432 372V430"/>
+            <circle class="sx-node sx-fade" cx="432" cy="292" r="3" style="--d:1160"/>
+          </g>
+          <!-- Loads -->
+          <rect class="sx-sym draw" pathLength="1" style="--d:1250" x="100" y="430" width="56" height="40"/>
+          <rect class="sx-sym draw" pathLength="1" style="--d:1300" x="204" y="430" width="56" height="40"/>
+          <rect class="sx-sym sx-sym--gold draw" pathLength="1" style="--d:1350" x="308" y="430" width="56" height="40"/>
+          <rect class="sx-sym draw" pathLength="1" style="--d:1400" x="404" y="430" width="56" height="40"/>
+          <text class="sx-label sx-fade" x="128" y="455" text-anchor="middle" style="--d:1450">FZA</text>
+          <text class="sx-label sx-fade" x="232" y="455" text-anchor="middle" style="--d:1480">ALUM</text>
+          <text class="sx-label sx-label--gold sx-fade" x="336" y="455" text-anchor="middle" style="--d:1510">CRÍT</text>
+          <text class="sx-label sx-fade" x="432" y="455" text-anchor="middle" style="--d:1540">CLIMA</text>
+          <text class="sx-label sx-fade" x="96" y="508" style="--d:1600">CARGAS</text>
+          <!-- Dimension marker -->
+          <path class="sx-wire draw" pathLength="1" style="--d:1500" d="M520 128v164M514 128h12M514 292h12" opacity=".5"/>
+        </svg>
+        <div class="readout sx-fade" style="--d:1500">
+          <div class="readout__k"><span>Variables eléctricas</span><i></i></div>
+          <div class="readout__t">Medición, análisis y fundamento técnico.</div>
+          <svg viewBox="0 0 220 38" preserveAspectRatio="none"><path class="wave" d="M0 19C18 3 37 3 55 19s37 16 55 0 37-16 55 0 37 16 55 0"/><path class="wave2" d="M0 19C18 9 37 9 55 19s37 10 55 0 37-10 55 0 37 10 55 0" transform="translate(18 0)"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__rail">
+    <div class="container">
+      <ul>
+        <li><span class="mono">01</span>Infraestructura eléctrica crítica</li>
+        <li><span class="mono">02</span>Salud · Industria · Agro &amp; viñas</li>
+        <li><span class="mono">03</span>Construcción · Mantención · Asesoría</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · CLIENTES ============ -->
+<!-- DEV NOTE: Reemplazar cada .logo-slot por el logo aprobado del cliente (SVG/PNG, escala de grises). No publicar logos sin autorización. -->
+<section class="clients" aria-labelledby="clients-title">
+  <div class="container">
+    <div class="clients__head" data-reveal>
+      <div>
+        <p class="eyebrow">Nuestra experiencia</p>
+        <h2 id="clients-title" style="margin-top:14px">Empresas que han confiado en nosotros.</h2>
+      </div>
+      <button class="marquee__btn" type="button" aria-pressed="false" data-marquee-toggle>
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.2" height="12"/><rect x="9.8" y="2" width="3.2" height="12"/></svg>
+        <span>Pausar</span>
+      </button>
+    </div>
+  </div>
+  <div class="marquee" data-reveal style="--d:120">
+    <div class="marquee__track">
+      <ul class="marquee__group" aria-label="Clientes">
+        {{LOGO_SLOTS}}
+      </ul>
+      <ul class="marquee__group" aria-hidden="true">
+        {{LOGO_SLOTS}}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · ENFOQUE ============ -->
+<section class="section approach" id="enfoque" aria-labelledby="approach-title">
+  <div class="container approach__grid">
+    <div class="approach__copy">
+      <p class="eyebrow" data-reveal>Experiencia técnica · Acompañamiento personalizado</p>
+      <h2 class="h2" id="approach-title" data-reveal style="--d:80">Cuando el desafío exige <span class="soft">ir más allá.</span></h2>
+      <p class="lead" data-reveal style="--d:160">Cuando una falla persiste o las respuestas habituales no resuelven el problema, profundizamos en el diagnóstico.</p>
+      <p data-reveal style="--d:220">Analizamos las condiciones reales de operación, contrastamos antecedentes y buscamos el origen para definir una solución adecuada a cada instalación.</p>
+      <p data-reveal style="--d:280">Brindamos atención directa y soluciones a medida, combinando experiencia, criterio técnico y una ejecución rigurosa en cada proyecto.</p>
+      <a class="link" href="/nosotros/" data-reveal style="--d:340">Conoce cómo trabajamos
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg>
+      </a>
+    </div>
+    <div class="approach__aside">
+      <div class="pillars__label" data-reveal><span>Nuestros pilares</span><span class="mono">03</span></div>
+      <ul>
+        <li class="pillar" data-reveal style="--d:80"><span class="pillar__n">01</span><h3>Rigor técnico</h3><p>Decisiones fundamentadas en mediciones, análisis y antecedentes verificables.</p></li>
+        <li class="pillar" data-reveal style="--d:160"><span class="pillar__n">02</span><h3>Continuidad operacional</h3><p>Soluciones que consideran las necesidades y la criticidad de cada instalación.</p></li>
+        <li class="pillar" data-reveal style="--d:240"><span class="pillar__n">03</span><h3>Confianza y confidencialidad</h3><p>Atención personalizada y manejo responsable de la información técnica y comercial.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · SERVICIOS ============ -->
+<section class="section services" id="servicios" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Nuestras áreas de especialización</p>
+        <h2 class="h2" id="services-title" data-reveal style="--d:80;margin-top:22px">Seis áreas. <span class="soft">Un mismo estándar de excelencia.</span></h2>
+      </div>
+      <p class="lead" data-reveal style="--d:160">Desde la asesoría y el diseño hasta la ejecución, la mantención y el diagnóstico especializado.</p>
+    </div>
+
+    <ul class="svc-grid">
+      <li class="svc" data-reveal style="--d:0">
+        <div class="svc__top"><span class="svc__n">01</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M13 3v20M5 7h16"/><path d="M5 7 2 14a3.5 3.5 0 0 0 6 0L5 7Zm16 0-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/><path d="M9 23h8"/></svg></span></div>
+        <h3>Asesoría técnica y representación</h3>
+        <p>Acompañamiento personalizado, análisis de discrepancias y representación del cliente en reuniones técnicas, con independencia de criterio y respaldo técnico.</p>
+        <a class="link" href="/servicios/#asesoria-tecnica">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+      <li class="svc" data-reveal style="--d:80">
+        <div class="svc__top"><span class="svc__n">02</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 21h20V5"/><path d="M3 21 23 5"/><path d="M7 21v-2M11 21v-3M15 21v-2M19 21v-3M23 9h-2M23 13h-3M23 17h-2"/><circle cx="9" cy="8" r="3"/></svg></span></div>
+        <h3>Ingeniería de diseño</h3>
+        <p>Desarrollo de proyectos eléctricos mediante levantamientos en terreno, planimetría y coordinación con las distintas especialidades.</p>
+        <a class="link" href="/servicios/#ingenieria-de-diseno">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+      <li class="svc" data-reveal style="--d:160">
+        <div class="svc__top"><span class="svc__n">03</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M14.5 2 6 14.5h6.5L11 24l9-13h-6.5L14.5 2Z"/></svg></span></div>
+        <h3>Construcción eléctrica</h3>
+        <p>Ejecución de proyectos eléctricos propios o entregados por el cliente, con planificación, supervisión y rigor técnico en cada detalle.</p>
+        <a class="link" href="/servicios/#construccion-electrica">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+      <li class="svc" data-reveal style="--d:0">
+        <div class="svc__top"><span class="svc__n">04</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="3.5"/><path d="M13 2.5v3M13 20.5v3M2.5 13h3M20.5 13h3M5.6 5.6l2.1 2.1M18.3 18.3l2.1 2.1M5.6 20.4l2.1-2.1M18.3 7.7l2.1-2.1"/><circle cx="13" cy="13" r="7.5"/></svg></span></div>
+        <h3>Mantención especializada</h3>
+        <p>Mantenciones preventivas, predictivas y correctivas, planificadas según el estado y la criticidad de cada instalación.</p>
+        <a class="link" href="/servicios/#mantencion-especializada">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+      <li class="svc" data-reveal style="--d:80">
+        <div class="svc__top"><span class="svc__n">05</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><rect x="3" y="4" width="20" height="14" rx="1"/><path d="M6 12h3l1.5-3 2.5 6 2-4.5 1 1.5h4M9 22h8M13 18v4"/></svg></span></div>
+        <h3>Instalación de equipos de alta complejidad</h3>
+        <p>Habilitación e instalación eléctrica para equipos médicos e industriales, considerando sus requerimientos técnicos y la coordinación con proveedores.</p>
+        <a class="link" href="/servicios/#equipos-alta-complejidad">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+      <li class="svc" data-reveal style="--d:160">
+        <div class="svc__top"><span class="svc__n">06</span><span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3.5 18a9.5 9.5 0 1 1 19 0"/><path d="m13 18 5-6"/><circle cx="13" cy="18" r="1.4"/><path d="M6 13.5l1.4.8M8.3 9.6l.9 1.3M13 8v1.6M17.7 9.6l-.9 1.3M3 22h20"/></svg></span></div>
+        <h3>Equipos y diagnóstico técnico</h3>
+        <p>Mediciones, termografía y análisis de variables eléctricas para investigar fallas, evaluar instalaciones y fundamentar decisiones.</p>
+        <a class="link" href="/servicios/#diagnostico-tecnico">Conocer especialidad <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+      </li>
+    </ul>
+
+    <div class="svc-extra" data-reveal>
+      <div class="svc-extra__tag">
+        <span class="svc__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M3 22h20M6 22V14M11 22V9M16 22v-6M21 22V5"/><path d="m4 10 6-5 5 4 7-6"/></svg></span>
+        <span>Servicio complementario</span>
+      </div>
+      <div>
+        <h3>Asesoría tarifaria y transición a cliente libre</h3>
+        <p>Evaluamos consumos, facturación y condiciones de suministro para identificar oportunidades de optimización tarifaria.</p>
+      </div>
+      <a class="link" href="/servicios/#asesoria-tarifaria">Conocer este servicio <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+    </div>
+
+    <div class="services__foot" data-reveal>
+      <a class="btn btn--navy btn--arrow" href="/servicios/">Explorar todos los servicios
+        <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h14m-5-5 5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · INDUSTRIAS ============ -->
+<section class="section industries on-navy" id="industrias" aria-labelledby="ind-title">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Entornos exigentes</p>
+        <h2 class="h2" id="ind-title" data-reveal style="--d:80;margin-top:22px">Donde la continuidad <span class="soft">requiere precisión.</span></h2>
+      </div>
+      <p class="lead" data-reveal style="--d:160">Abordamos las necesidades eléctricas de cada operación considerando sus equipos, procesos y condiciones de servicio.</p>
+    </div>
+
+    <ul class="ind-grid">
+      <li class="ind" data-reveal style="--d:0">
+        <div class="ind__art" aria-hidden="true">
+          <span class="ind__big">01</span>
+          <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+            <path class="tr3" d="M0 120H400"/>
+            <path class="tr" d="M0 120h70l10-6 8 6h20l8 18 12-82 12 92 9-28h44l12-10 14 10h50l8 18 12-82 12 92 9-28H400"/>
+            <text class="lbl" x="20" y="176">CONTINUIDAD · SUMINISTRO</text>
+          </svg>
+        </div>
+        <div class="ind__body">
+          <span class="ind__n">01 / Salud</span>
+          <h3>Salud e infraestructura clínica</h3>
+          <p>Ingeniería y diagnóstico de instalaciones eléctricas y alimentación de equipos médicos en entornos con altas exigencias de continuidad operacional.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span>
+            <ul class="chips"><li>Equipamiento de alta complejidad</li><li>Calidad de suministro</li><li>Respaldo eléctrico</li></ul>
+          </div>
+        </div>
+      </li>
+      <li class="ind" data-reveal style="--d:100">
+        <div class="ind__art" aria-hidden="true">
+          <span class="ind__big">02</span>
+          <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+            <path class="tr3" d="M0 110H400"/>
+            <path class="tr" d="M0 110C33 60 67 60 100 110s67 50 100 0 67-50 100 0 67 50 100 0"/>
+            <path class="tr2" d="M-33 110C0 60 34 60 67 110s67 50 100 0 67-50 100 0 67 50 100 0 67-50 100 0"/>
+            <path class="tr2" d="M33 110C66 60 100 60 133 110s67 50 100 0 67-50 100 0 67 50 100 0" opacity=".6"/>
+            <text class="lbl" x="20" y="182">L1 · L2 · L3</text>
+          </svg>
+        </div>
+        <div class="ind__body">
+          <span class="ind__n">02 / Industria</span>
+          <h3>Industria y operaciones industriales</h3>
+          <p>Soluciones eléctricas para máquinas, equipos y procesos productivos, desde el diagnóstico de perturbaciones hasta la ejecución y mantención.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span>
+            <ul class="chips"><li>Máquinas y procesos</li><li>Distribución eléctrica</li><li>Mantención especializada</li></ul>
+          </div>
+        </div>
+      </li>
+      <li class="ind" data-reveal style="--d:200">
+        <div class="ind__art" aria-hidden="true">
+          <span class="ind__big">03</span>
+          <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+            <path class="tr3" d="M0 168c60-22 120-26 200-12s140 10 200-6"/>
+            <path class="tr2" d="M0 182c80-18 150-18 220-6s120 8 180-4"/>
+            <path class="tr" d="M70 160V62M52 74h36M56 88h28M330 152V54M312 66h36M316 80h28M200 156V58M182 70h36M186 84h28"/>
+            <path class="tr2" d="M52 74c50 26 80 26 130-4M88 74c40 22 74 22 112-4M218 70c40 24 74 24 112-4M182 70" />
+            <path class="tr2" d="M0 66c20 6 36 8 52 8M348 66c20 4 36 2 52-4"/>
+            <text class="lbl" x="20" y="40">MEDIA TENSIÓN</text>
+          </svg>
+        </div>
+        <div class="ind__body">
+          <span class="ind__n">03 / Agro &amp; viñedos</span>
+          <h3>Agro, campos y viñedos</h3>
+          <p>Soluciones eléctricas para operaciones agrícolas y vitivinícolas, con experiencia en media tensión y diagnóstico de fallas asociadas a condiciones ambientales.</p>
+          <div class="ind__areas"><span>Áreas de experiencia</span>
+            <ul class="chips"><li>Media tensión</li><li>Aislación eléctrica</li><li>Continuidad operacional</li></ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 06 · PROYECTOS ============ -->
+<!-- DEV NOTE: Tarjetas provisionales. Reemplazar con 2–3 proyectos reales aprobados por C&K (nombre, sector, descripción, fotografía). No publicar proyectos ficticios. -->
+<section class="section projects" id="proyectos" aria-labelledby="prj-title">
+  <div class="container">
+    <div class="section-head section-head--split">
+      <div>
+        <p class="eyebrow" data-reveal>Nuestra experiencia en terreno</p>
+        <h2 class="h2" id="prj-title" data-reveal style="--d:80;margin-top:22px">Ingeniería de alto nivel. <span class="soft">Proyectos seleccionados.</span></h2>
+      </div>
+      <p class="lead" data-reveal style="--d:160">Cada proyecto presenta desafíos particulares. Nuestro trabajo combina análisis, planificación y ejecución rigurosa para desarrollar soluciones coherentes con las necesidades de cada operación.</p>
+    </div>
+
+    <ul class="prj-grid">
+      <li class="prj" data-reveal style="--d:0">
+        <div class="prj__media">
+          <span class="prj__badge">Contenido provisional</span>
+          <div class="prj__ph" aria-hidden="true"><svg viewBox="0 0 300 200"><rect x="20" y="30" width="110" height="140"/><rect x="40" y="52" width="70" height="20"/><rect x="40" y="84" width="70" height="20"/><rect class="g" x="40" y="116" width="70" height="20"/><path d="M130 100h50v-60h100M180 100v60h100M230 40v120"/><circle class="g" cx="180" cy="100" r="5"/></svg></div>
+          <span class="prj__cap">Fotografía del proyecto</span>
+        </div>
+        <div class="prj__body">
+          <div class="prj__meta"><span>Infraestructura clínica</span><span class="mono">/ 01</span></div>
+          <h3>Nombre del proyecto aprobado</h3>
+          <p>Breve descripción del trabajo realizado. Espacio reservado para un proyecto real seleccionado y aprobado por C&amp;K.</p>
+          <a class="link" href="/proyectos/">Ver proyecto <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+        </div>
+      </li>
+      <li class="prj" data-reveal style="--d:100">
+        <div class="prj__media">
+          <span class="prj__badge">Contenido provisional</span>
+          <div class="prj__ph" aria-hidden="true"><svg viewBox="0 0 300 200"><path d="M20 160h260"/><path d="M60 160V70l40-30 40 30v90"/><path class="g" d="M180 160V50h70v110"/><path d="M195 70h40M195 90h40M195 110h40M195 130h40M80 100h40M80 125h40"/></svg></div>
+          <span class="prj__cap">Fotografía del proyecto</span>
+        </div>
+        <div class="prj__body">
+          <div class="prj__meta"><span>Construcción eléctrica</span><span class="mono">/ 02</span></div>
+          <h3>Nombre del proyecto aprobado</h3>
+          <p>Breve descripción del trabajo realizado. Espacio reservado para un proyecto real seleccionado y aprobado por C&amp;K.</p>
+          <a class="link" href="/proyectos/">Ver proyecto <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+        </div>
+      </li>
+      <li class="prj" data-reveal style="--d:200">
+        <div class="prj__media">
+          <span class="prj__badge">Contenido provisional</span>
+          <div class="prj__ph" aria-hidden="true"><svg viewBox="0 0 300 200"><path d="M20 150c50-20 100-24 140-10s80 14 120-4"/><path d="M80 146V50M60 64h40M220 142V46M200 60h40"/><path class="g" d="M60 64c50 30 110 30 140-4M100 64c40 26 90 26 120-4"/></svg></div>
+          <span class="prj__cap">Fotografía del proyecto</span>
+        </div>
+        <div class="prj__body">
+          <div class="prj__meta"><span>Media tensión · Agro</span><span class="mono">/ 03</span></div>
+          <h3>Nombre del proyecto aprobado</h3>
+          <p>Breve descripción del trabajo realizado. Espacio reservado para un proyecto real seleccionado y aprobado por C&amp;K.</p>
+          <a class="link" href="/proyectos/">Ver proyecto <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="projects__foot" data-reveal>
+      <p>Presentamos solo proyectos reales, con información y fotografías autorizadas por cada cliente.</p>
+      <a class="btn btn--outline btn--arrow" href="/proyectos/">Conoce nuestros proyectos
+        <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 10h14m-5-5 5 5-5 5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · CONTACTO ============ -->
+<section class="section contact" id="contacto" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__intro">
+      <div>
+        <p class="eyebrow" data-reveal>Evaluación de nuevos proyectos</p>
+        <h2 class="h2" id="contact-title" data-reveal style="--d:80;margin-top:22px">Tu desafío merece <span class="soft">la experiencia adecuada.</span></h2>
+      </div>
+      <div class="copy" data-reveal style="--d:160">
+        <p>En C&amp;K Ingenieros abordamos proyectos que requieren experiencia especializada, rigor técnico y una ejecución de alto estándar.</p>
+        <p>Evaluamos cada requerimiento de manera personalizada para comprender su alcance y determinar cómo podemos aportar valor.</p>
+      </div>
+    </div>
+
+    <div class="contact__card" data-reveal>
+      <figure class="karen" style="margin:0">
+        <img src="{{KAREN}}" alt="Karen Rodríguez, Gerenta General de C&amp;K Ingenieros" width="680" height="1020" loading="lazy" decoding="async">
+        <figcaption class="karen__info">
+          <div class="name">Karen</div>
+          <div class="role">Gerenta General</div>
+          <div class="rule"></div>
+          <p>Contacto directo y atención personalizada.<strong>Conversemos sobre tu próximo desafío.</strong></p>
+        </figcaption>
+      </figure>
+
+      <div>
+        <div class="form-wrap" id="form-wrap">
+          <h3>Solicitar evaluación especializada</h3>
+          <p class="sub">Los campos marcados con <span style="color:var(--gold-ink)">*</span> son obligatorios.</p>
+          <!--
+            CONFIGURACIÓN DEL ENVÍO
+            Definir data-endpoint con la URL de un servicio de formularios compatible con hosting estático
+            (p. ej. Formspree, Web3Forms, Basin, o un script PHP en Hostinger). Sin endpoint, el formulario
+            prepara un correo en el cliente del usuario hacia contacto@cykingenieros.cl.
+          -->
+          <form class="form" id="lead-form" novalidate data-endpoint="" data-mailto="contacto@cykingenieros.cl">
+            <div class="form__row">
+              <div class="field">
+                <label for="f-name">Nombre y apellido<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-name" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required aria-describedby="e-name">
+                <span class="err" id="e-name" role="alert">Ingresa tu nombre y apellido.</span>
+              </div>
+              <div class="field">
+                <label for="f-company">Empresa u organización<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-company" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de la empresa" required aria-describedby="e-company">
+                <span class="err" id="e-company" role="alert">Indica la empresa u organización.</span>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label for="f-email">Correo electrónico<span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Tu correo de contacto" required aria-describedby="e-email">
+                <span class="err" id="e-email" role="alert">Ingresa un correo electrónico válido.</span>
+              </div>
+              <div class="field">
+                <label for="f-spec">Especialidad requerida<span class="req" aria-hidden="true">*</span></label>
+                <div class="select">
+                  <select class="input" id="f-spec" name="especialidad" required aria-describedby="e-spec">
+                    <option value="" disabled selected>Selecciona una especialidad</option>
+                    <option>Asesoría técnica y representación</option>
+                    <option>Ingeniería de diseño</option>
+                    <option>Construcción eléctrica</option>
+                    <option>Mantención especializada</option>
+                    <option>Instalación de equipos de alta complejidad</option>
+                    <option>Equipos y diagnóstico técnico</option>
+                    <option>Asesoría tarifaria y cliente libre</option>
+                    <option>Otro</option>
+                  </select>
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 6 4.5 4.5L12.5 6"/></svg>
+                </div>
+                <span class="err" id="e-spec" role="alert">Selecciona una especialidad.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-msg">Cuéntanos sobre tu proyecto<span class="req" aria-hidden="true">*</span></label>
+              <textarea class="input" id="f-msg" name="mensaje" rows="5" placeholder="Describe brevemente tu requerimiento o desafío técnico." required minlength="10" aria-describedby="e-msg"></textarea>
+              <span class="err" id="e-msg" role="alert">Describe brevemente tu requerimiento (mínimo 10 caracteres).</span>
+            </div>
+            <!-- Anti-spam honeypot -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">No completar este campo</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="privacy">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 3.5 4.5v5c0 4 2.8 7.2 6.5 8.5 3.7-1.3 6.5-4.5 6.5-8.5v-5L10 2Z"/><path d="m7 10 2 2 4-4"/></svg>
+              <p>Tratamos cada consulta y sus antecedentes técnicos y comerciales con reserva y discreción, conforme a nuestra <a href="/politica-de-privacidad/">Política de Privacidad</a>.</p>
+            </div>
+            <div class="form__actions">
+              <button class="btn" type="submit">Enviar solicitud
+                <span class="spin" aria-hidden="true"></span>
+                <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+              </button>
+              <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+
+        <div class="success" id="form-success" tabindex="-1" role="status" aria-live="polite">
+          <div class="success__ico" aria-hidden="true"><svg viewBox="0 0 30 30"><path d="m7 15.5 5.5 5.5L23.5 9"/></svg></div>
+          <h3>Gracias por contactarnos.</h3>
+          <p>Hemos recibido tu solicitud. Nuestro equipo revisará la información y se comunicará contigo para evaluar los próximos pasos.</p>
+          <a class="link" href="#top">Volver al inicio <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9.5 3.5 14 8l-4.5 4.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="alt" data-reveal>
+      <h3>¿Prefieres contactarnos directamente?</h3>
+      <div class="alt__links">
+        <a href="mailto:contacto@cykingenieros.cl"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="1"/><path d="m3 5.5 7 5.5 7-5.5"/></svg><span><span class="k">Correo</span><br><span class="v">contacto@cykingenieros.cl</span></span></a>
+        <a href="https://wa.me/56987512250" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17 9.6a7 7 0 0 1-10.3 6.2L3 17l1.2-3.6A7 7 0 1 1 17 9.6Z"/></svg><span><span class="k">WhatsApp</span><br><span class="v">+56 9 8751 2250</span></span></a>
+      </div>
+      <a class="btn btn--wa btn--sm" href="https://wa.me/56987512250?text=Hola%2C%20quisiera%20solicitar%20una%20evaluaci%C3%B3n%20t%C3%A9cnica." target="_blank" rel="noopener">Escríbenos por WhatsApp
+        <svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ 08 · FOOTER ============ -->
+<footer class="footer on-navy">
+  <div class="footer__mark" aria-hidden="true">C&amp;K</div>
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="{{LOGO_WHITE}}" alt="C&amp;K Ingenieros" width="640" height="229" loading="lazy">
+        <p class="footer__tag">Comprender tu operación. Resolver lo complejo. <span>Anticipar lo que viene.</span></p>
+        <p class="footer__legal">CYK Ingeniería y Construcción Eléctrica SpA</p>
+      </div>
+      <nav aria-label="Pie de página">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="/"><span class="mono">01</span>Inicio</a></li>
+          <li><a href="/nosotros/"><span class="mono">02</span>Nosotros</a></li>
+          <li><a href="/servicios/"><span class="mono">03</span>Servicios</a></li>
+          <li><a href="/proyectos/"><span class="mono">04</span>Proyectos</a></li>
+          <li><a href="/contacto/"><span class="mono">05</span>Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="footer__contact">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@cykingenieros.cl"><span><small>Correo</small>contacto@cykingenieros.cl</span></a></li>
+          <li><a href="https://wa.me/56987512250" target="_blank" rel="noopener"><span><small>WhatsApp</small>+56 9 8751 2250</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> C&amp;K Ingenieros. Todos los derechos reservados.</span>
+      <a href="/politica-de-privacidad/">Política de Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56987512250" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5.1 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement;
+  root.classList.add('js');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Year */
+  d.querySelectorAll('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear();});
+
+  /* Header state + floating WhatsApp */
+  var header=d.querySelector('.header'), wa=d.querySelector('.wa-float'), ticking=false;
+  function onScroll(){
+    var y=window.scrollY;
+    header.classList.toggle('is-scrolled',y>8);
+    wa.classList.toggle('is-visible',y>window.innerHeight*.9);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
+  onScroll();
+
+  /* Mobile navigation */
+  var burger=d.querySelector('.burger'), mnav=d.getElementById('mnav');
+  function setMenu(open){
+    burger.setAttribute('aria-expanded',String(open));
+    mnav.classList.toggle('is-open',open);
+    d.body.style.overflow=open?'hidden':'';
+    if(open){var f=mnav.querySelector('a');f&&f.focus({preventScroll:true});}
+  }
+  burger.addEventListener('click',function(){setMenu(burger.getAttribute('aria-expanded')!=='true');});
+  mnav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('is-open')){setMenu(false);burger.focus();}});
+  window.matchMedia('(min-width:1060px)').addEventListener('change',function(m){if(m.matches)setMenu(false);});
+
+  /* Hero entrance */
+  var hero=d.querySelector('.hero');
+  requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('is-ready');});});
+
+  /* Reveal on scroll */
+  var items=d.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('is-in');
+          if(en.target.hasAttribute('data-draw'))en.target.classList.add('is-drawn');
+          io.unobserve(en.target);
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    items.forEach(function(el){io.observe(el);});
+  }else{
+    items.forEach(function(el){el.classList.add('is-in','is-drawn');});
+  }
+
+  /* Marquee pause toggle (WCAG 2.2.2) */
+  var mq=d.querySelector('.marquee'), mqBtn=d.querySelector('[data-marquee-toggle]');
+  if(mqBtn){mqBtn.addEventListener('click',function(){
+    var p=mq.classList.toggle('is-paused');
+    mqBtn.setAttribute('aria-pressed',String(p));
+    mqBtn.querySelector('span').textContent=p?'Reanudar':'Pausar';
+    mqBtn.querySelector('svg').innerHTML=p?'<path d="M4 2.5v11l9.5-5.5z"/>':'<rect x="3" y="2" width="3.2" height="12"/><rect x="9.8" y="2" width="3.2" height="12"/>';
+  });}
+
+  /* Contact form */
+  var form=d.getElementById('lead-form');
+  if(!form)return;
+  var started=Date.now(), status=d.getElementById('form-status'), btn=form.querySelector('button[type="submit"]');
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function validateField(el){
+    var ok=el.checkValidity();
+    if(el.type==='email'&&ok)ok=emailRe.test(el.value.trim());
+    if(el.required&&!el.value.trim())ok=false;
+    var f=el.closest('.field');
+    f.classList.toggle('has-error',!ok);
+    el.setAttribute('aria-invalid',String(!ok));
+    return ok;
+  }
+  form.querySelectorAll('.input').forEach(function(el){
+    el.addEventListener('blur',function(){if(el.value)validateField(el);});
+    el.addEventListener('input',function(){if(el.closest('.field').classList.contains('has-error'))validateField(el);});
+    el.addEventListener('change',function(){if(el.tagName==='SELECT')validateField(el);});
+  });
+  function showSuccess(){
+    d.getElementById('form-wrap').hidden=true;
+    var s=d.getElementById('form-success');
+    s.classList.add('is-visible');
+    s.focus({preventScroll:true});
+    s.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  }
+  function setStatus(msg,err){status.textContent=msg;status.classList.toggle('is-error',!!err);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    setStatus('');
+    var fields=[].slice.call(form.querySelectorAll('.input')), firstBad=null;
+    fields.forEach(function(el){if(!validateField(el)&&!firstBad)firstBad=el;});
+    if(firstBad){firstBad.focus();setStatus('Revisa los campos marcados.',true);return;}
+    /* Anti-spam: honeypot + minimum time on page */
+    if(form.website.value||Date.now()-started<2500){showSuccess();return;}
+
+    var data=new FormData(form); data.delete('website');
+    data.append('_subject','Nueva solicitud de evaluación — '+form.especialidad.value);
+    var endpoint=form.getAttribute('data-endpoint');
+
+    if(!endpoint){
+      /* Fallback sin servicio configurado: abrir el correo del usuario con la solicitud prellenada */
+      var body='Nombre: '+form.nombre.value+'\nEmpresa: '+form.empresa.value+'\nCorreo: '+form.email.value+'\nEspecialidad: '+form.especialidad.value+'\n\n'+form.mensaje.value;
+      window.location.href='mailto:'+form.getAttribute('data-mailto')+'?subject='+encodeURIComponent('Solicitud de evaluación — '+form.especialidad.value)+'&body='+encodeURIComponent(body);
+      setStatus('Abrimos tu aplicación de correo con la solicitud lista para enviar.');
+      return;
+    }
+    btn.setAttribute('aria-busy','true');
+    fetch(endpoint,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){if(!r.ok)throw new Error(r.status);showSuccess();})
+      .catch(function(){setStatus('No pudimos enviar tu solicitud. Inténtalo nuevamente o escríbenos a contacto@cykingenieros.cl.',true);})
+      .then(function(){btn.removeAttribute('aria-busy');});
+  });
+})();
+</script>
+</body>
+</html>
